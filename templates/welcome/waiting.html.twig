@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ 'welcome.title'|trans }}</title>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo_black.ico') }}"/>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="site navigation">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('welcome') }}">
+            <img src="{{ asset('images/logo_white.svg') }}" width="100" alt="ITP"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img class="mb-2" src="{{ asset('images/Flag_of_%s.svg'|format(app.request.locale|upper)) }}"
+                             height="15" alt="{{ app.request.locale|upper }}"/>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ path('welcome', {_locale: 'de'}) }}">
+                                {{ 'base.language.de'|trans }}
+                                <img class="mb-2" src="{{ asset('images/Flag_of_DE.svg') }}" height="15" alt="DEU"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path('welcome', {_locale: 'en'}) }}">
+                                {{ 'base.language.en'|trans }}
+                                <img class="mb-2" src="{{ asset('images/Flag_of_EN.svg') }}" height="15" alt="ENG"/>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
+        <hr class="my-4">
+        <p class="lead">{{ 'welcome.inactive'|trans }}</p>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light" aria-label="language menu">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       href="https://thueringer-judoverband.de/home/">{{ 'base.link-text.homepage'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       href="https://www.thueringer-judoverband.de/navigation-footer/impressum/">{{ 'base.link-text.about-us'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       href="https://www.thueringer-judoverband.de/links/datenschutz/">{{ 'base.link-text.privacy'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

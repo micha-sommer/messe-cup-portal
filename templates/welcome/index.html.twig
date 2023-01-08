@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'welcome.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
+            <p class="lead">{{ 'welcome.active'|trans({'year':year}) }}</p>
+            {% if date(endDate, 'Europe/Paris') < date('now', 'Europe/Paris') %}
+                <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
+            {% endif %}
+            <hr class="my-4">
+{#            <a class="btn btn-primary float-left"#}
+{#               href="{{ path('registration_send_confirmation', {'id': registration.id}) }}">#}
+{#                {{ 'welcome.overview.send-confirmation'|trans }}#}
+{#            </a>#}
+{#            <hr class="my-4">#}
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ 'welcome.overview.registration'|trans }}</h5>
+                            <p class="card-text m-0">
+                                <small class="text-muted align-bottom">{{ 'registration.data.email'|trans }}</small>
+                            </p>
+                            <p class="card-text m-0">
+                                {{ registration.email }}
+                            </p>
+                            <p class="card-text m-0">
+                                <small class="text-muted align-bottom">{{ 'registration.data.club'|trans }}</small>
+                            </p>
+                            <p class="card-text m-0">
+                                {{ registration.club }} ({{ registration.country }})
+                            </p>
+                            <p class="card-text m-0">
+                                <small class="text-muted align-bottom">{{ 'registration.data.contact-person'|trans }}</small>
+                            </p>
+                            <p class="card-text m-0">
+                                {{ registration.firstName }} {{ registration.lastName }}
+                            </p>
+                            <p class="card-text m-0">
+                                <small class="text-muted align-bottom">{{ 'registration.data.telephone'|trans }}</small>
+                            </p>
+                            <p class="card-text m-0">
+                                {{ registration.telephone }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+{#                <div class="col">#}
+{#                    <div class="card">#}
+{#                        <div class="card-body">#}
+{#                            <h5 class="card-title">{{ 'welcome.overview.contestants'|trans }}</h5>#}
+{#                        </div>#}
+{#                        <ul class="list-group list-group-flush">#}
+{#                            {% for contestant in contestants %}#}
+{#                                <li class="list-group-item d-flex justify-content-between">#}
+{#                                    {{ contestant.firstName }} {{ contestant.lastName }}#}
+{#                                    <div>#}
+{#                                        <span class="badge bg-info">{{ "participants.contestants.data.age-category.#{ contestant.ageCategory }"|trans }}</span>#}
+{#                                        <span class="badge bg-primary">{{ contestant.weightCategory }}</span>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col">#}
+{#                    <div class="card" id="officials-list">#}
+{#                        <div class="card-body">#}
+{#                            <h5 class="card-title">{{ 'welcome.overview.officials'|trans }}</h5>#}
+{#                        </div>#}
+{#                        <ul class="list-group list-group-flush">#}
+{#                            {% for official in officials %}#}
+{#                                <li class="list-group-item d-flex justify-content-between">#}
+{#                                    {{ official.firstName }} {{ official.lastName }}#}
+{#                                    <div>#}
+{#                                        <span class="badge bg-primary">#}
+{#                                            {{ "participants.officials.data.role.#{ official.role }"|trans }}#}
+{#                                        </span>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+            <hr class="my-4">
+            <p>{{ 'welcome.contact-us'|trans }}</p>
+            <p>Erfurter Judo-Club e.V.<br/>
+                In der Lutsche 10<br/>
+                99097 Erfurt<br/>
+                <a class="fa fa-phone" href="tel:0049-361-4233914"> +49 361 - 4233914</a><br/>
+                <a class="fa fa-envelope" href="mailto:info@erfurter-judo-club.de">
+                    info@erfurter-judo-club.de</a><br/>
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+base:
+  language:
+    title: language
+    de: german
+    en: english
+  link-text:
+    homepage: 'TJV homepage'
+    about-us: 'about us'
+    privacy: privacy
+  menu:
+    home: Home
+
+welcome:
+  title: 'Welcome to Messe-Cup and EGA-Pokal'
+  greeting: Hello!
+  inactive: 'Registration for the Messe-Cup and EGA-Pokal is currently not possible.'
+  active: 'This is the new entry form for the registration process of Messe-Cup and EGA-Pokal {year}.'
+  contact-us: 'Feel free to contact us:'

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'welcome.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
+            <p class="lead">{{ 'welcome.active'|trans({'year':year}) }}</p>
+            {% if date(endDate, 'Europe/Paris') < date('now', 'Europe/Paris') %}
+                <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
+            {% endif %}
+            <hr class="my-4">
+{#            <figure class="figure">#}
+{#                {% for country in countries %}#}
+{#                    <img src="{{ asset('images/Flag_of_%s.svg'|format(country)) }}"#}
+{#                         class="rounded float-left mb-2 ml-2" height="50" alt="{{ country }}">#}
+{#                {% endfor %}#}
+{#            </figure>#}
+{#            <p>{{ 'welcome.contestants'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>#}
+{#            <div class="card-group">#}
+{#                <div class="card text-bg-dark">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">{{ 'welcome.overview.age-category.cadet'|trans }}</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['total'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-40</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-40'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-44</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-44'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-48</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-48'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-52</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-52'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-57</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-57'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-63</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-63'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-70</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-70'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">+70</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['+70'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="card-group">#}
+{#                <div class="card text-bg-dark">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">{{ 'welcome.overview.age-category.junior'|trans }}</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['total'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-44</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-44'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-48</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-48'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-52</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-52'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-57</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-57'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-63</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-63'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-70</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-70'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">-78</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-78'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">+78</h5>#}
+{#                        <h5><span class="badge bg-primary">{{ categories['junior']['+78'] }}</span></h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <hr class="my-4">#}
+            <p>{{ 'welcome.contact-us'|trans }}</p>
+            <p>Thüringer Judo-Verband e.V.<br/>
+                Schützenstraße 4<br/>
+                99096 Erfurt<br/>
+                <a class="fa fa-phone" href="tel:0049-0361-3731647"> +49 (0) 361 373 16 47</a><br/>
+                <a class="fa fa-envelope" href="mailto:info@thueringer-judoverband.de">
+                    info@thueringer-judoverband.de</a><br/>
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+base:
+  language:
+    title: Sprache
+    de: Deutsch
+    en: Englisch
+  link-text:
+    homepage: 'Homepage des TJV'
+    about-us: Impressum
+    privacy: Datenschutz
+  menu:
+    home: Start
+
+welcome:
+  title: 'Willkommen zum Messe-Cup und EGA-Pokal'
+  greeting: Hallo!
+  inactive: 'Aktuell ist die Anmeldung für den Messe-Cup und EGA-Pokal nicht möglich.'
+  active: 'Dies ist das neue Anmeldeformular für die Registrierung zum Messe-Cup und EGA-Pokal {year}.'
+  contact-us: 'Bei Fragen kontaktiere uns:'
