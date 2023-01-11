@@ -36,3 +36,5 @@ welcome:
   inactive: 'Registration for the Messe-Cup and EGA-Pokal is currently not possible.'
   active: 'This is the new entry form for the registration process of Messe-Cup and EGA-Pokal {year}.'
   contact-us: 'Feel free to contact us:'
+  overview:
+      registration: 'Contact Information'

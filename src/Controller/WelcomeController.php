@@ -42,7 +42,9 @@ class WelcomeController extends AbstractController
 
     public function activeAuthenticatedWelcome(): Response
     {
-        return $this->render('welcome/index.html.twig');
+        return $this->render('welcome/index.html.twig', [
+            'registration' => $this->getUser(),
+        ]);
     }
 
     public function activeAnonymousWelcome(): Response
