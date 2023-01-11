@@ -5,6 +5,8 @@ twig:
         year: 2023
         endDate: 'March 15, 2023 23:59'
 
+    form_themes: ['bootstrap_5_layout.html.twig']
+
 when@test:
     twig:
         strict_variables: true

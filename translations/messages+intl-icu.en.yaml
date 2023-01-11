@@ -9,7 +9,27 @@ base:
     privacy: privacy
   menu:
     home: Home
-
+    register: Register
+    login: Login
+    logout: Logout
+login:
+    title: Login
+    description: 'Please enter the email address and password that have been used to register your club/association/union.'
+    action: login
+registration:
+    data:
+        email: Email
+        password: Password
+        club: Club
+        country: Country
+        contact-person: 'Contact Person'
+        first-name: 'First name'
+        last-name: 'Last name'
+        telephone: Telephone
+    new:
+        title: Registration
+        description: "Register here! In order to proceed with the registration, we will need a contact person. This information is also required for later changes that might or might not be needed. Once you've registered your club, you can add your contestants."
+        action: register
 welcome:
   title: 'Welcome to Messe-Cup and EGA-Pokal'
   greeting: Hello!

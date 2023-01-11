@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('welcome') }}">{{ 'base.menu.home'|trans }}</a>
                 </li>
-{#                {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 {#                    <li class="nav-item">#}
 {#                        <a class="nav-link"#}
 {#                           href="{{ path('registration_edit') }}">{{ 'base.menu.registration_edit'|trans }}</a>#}
@@ -86,11 +86,11 @@
 {#                            </ul>#}
 {#                        </li>#}
 {#                    {% endif %}#}
-{#                {% else %}#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{{ path('registration_new') }}">{{ 'base.menu.register'|trans }}</a>#}
-{#                    </li>#}
-{#                {% endif %}#}
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('registration_new') }}">{{ 'base.menu.register'|trans }}</a>
+                    </li>
+                {% endif %}
 {#                <li class="nav-item">#}
 {#                    {% if is_granted('IS_IMPERSONATOR') %}#}
 {#                        <a class="nav-link link-warning" href="{{ impersonation_exit_path(path('admin_index') ) }}">{{ 'base.menu.exit-impersonation'|trans }}</a>#}
