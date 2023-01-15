@@ -12,6 +12,40 @@ base:
     register: Register
     login: Login
     logout: Logout
+    contestant:
+        ega: EGA-Pokal
+        messe: Messe-Cup
+contestant:
+    title:
+        ega: EGA-Pokal
+        messe: Messe-Cup
+    description: 'Please enter as much information as you have available for the time being.'
+    data:
+        title:
+            male: Participant
+            female: Participant
+        name: Name
+        first-name: 'First name'
+        last-name: 'Last name'
+        year: 'Year of birth'
+        gender:
+            title: Gender
+            male: male
+            female: female
+        age-category:
+            title: 'Age category'
+            ega: 'U13 (under 13)'
+            messe: 'U16 (under 16)'
+        weight-category: 'Weight category'
+        comment:
+            title: 'add a comment'
+            for: 'comment for'
+global:
+    forms:
+        button:
+            save: Save
+            back: Back
+        unsaved-changes-warning: "You have unsaved changes. Do you really want to leave and loose the data or stay and continue?"
 login:
     title: Login
     description: 'Please enter the email address and password that have been used to register your club/association/union.'

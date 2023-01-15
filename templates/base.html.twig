@@ -32,12 +32,34 @@
 {#                        <a class="nav-link"#}
 {#                           href="{{ path('registration_edit') }}">{{ 'base.menu.registration_edit'|trans }}</a>#}
 {#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{{ path('officials') }}">{{ 'base.menu.officials'|trans }}</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{{ path('contestants') }}">{{ 'base.menu.contestants'|trans }}</a>#}
-{#                    </li>#}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ 'base.menu.contestant.messe'|trans }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ path('contestants_edit_messe_female') }}">
+                                {{ 'contestant.data.gender.female'|trans }}
+                            </a>
+                            <a class="dropdown-item" href="{{ path('contestants_edit_messe_male') }}">
+                                {{ 'contestant.data.gender.male'|trans }}
+                            </a>
+                        </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ 'base.menu.contestant.ega'|trans }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ path('contestants_edit_ega_female') }}">
+                                {{ 'contestant.data.gender.female'|trans }}
+                            </a>
+                            <a class="dropdown-item" href="{{ path('contestants_edit_ega_male') }}">
+                                {{ 'contestant.data.gender.male'|trans }}
+                            </a>
+                        </div>
+                    </li>
 
 {#                    {% if app.user.invoices|filter(invoice => invoice.published) is empty %}#}
 {#                        <li class="nav-item">#}

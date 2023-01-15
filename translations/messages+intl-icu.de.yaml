@@ -12,6 +12,40 @@ base:
     register: Registrieren
     login: Einloggen
     logout: Ausloggen
+    contestant:
+        ega: EGA-Pokal
+        messe: Messe-Cup
+contestant:
+    title:
+        ega: EGA-Pokal
+        messe: Messe-Cup
+    description: 'Bitte trage so viele Informationen ein, wie du kannst.'
+    data:
+        title:
+            male: Teilnehmer
+            female: Teilnehmerin
+        name: Name
+        first-name: Vorname
+        last-name: Nachname
+        year: Jahrgang
+        gender:
+            title: Geschlecht
+            male: männlich
+            female: weiblich
+        age-category:
+            title: Altersklasse
+            ega: U13
+            messe: U16
+        weight-category: Gewichtsklasse
+        comment:
+            title: 'Kommentar hinzufügen'
+            for: 'Kommentar für'
+global:
+    forms:
+        button:
+            save: Speichern
+            back: Zurück
+        unsaved-changes-warning: 'Du hast ungespeicherte Änderungen auf dieser Seite. Wenn du die Seite verlässt, gehen diese Änderungen verloren!'
 login:
     title: Einloggen
     description: 'Bitte trage deine Email-Adresse und dein Passwort ein, mit welchen du deinen Verband/Verein registriert hast.'

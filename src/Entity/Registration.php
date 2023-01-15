@@ -1,9 +1,11 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace App\Entity;
 
 use App\Repository\RegistrationRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -25,7 +27,7 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var ?string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
@@ -47,6 +49,46 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $country = null;
+
+    #[ORM\OneToMany(
+        mappedBy: 'registration',
+        targetEntity: EgaFemaleContestant::class,
+        cascade: ["persist", "remove"],
+        orphanRemoval: true,
+    )]
+    private Collection $egaFemaleContestants;
+
+    #[ORM\OneToMany(
+        mappedBy: 'registration',
+        targetEntity: EgaMaleContestant::class,
+        cascade: ["persist", "remove"],
+        orphanRemoval: true,
+    )]
+    private Collection $egaMaleContestants;
+
+    #[ORM\OneToMany
+    (mappedBy: 'registration',
+    targetEntity: MesseFemaleContestant::class,
+        cascade: ["persist", "remove"],
+        orphanRemoval: true,
+    )]
+    private Collection $messeFemaleContestants;
+
+    #[ORM\OneToMany(
+        mappedBy: 'registration',
+        targetEntity: MesseMaleContestant::class,
+        cascade: ["persist", "remove"],
+        orphanRemoval: true,
+    )]
+    private Collection $messeMaleContestants;
+
+    public function __construct()
+    {
+        $this->egaFemaleContestants = new ArrayCollection();
+        $this->egaMaleContestants = new ArrayCollection();
+        $this->messeFemaleContestants = new ArrayCollection();
+        $this->messeMaleContestants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -72,7 +114,7 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -186,6 +228,126 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCountry(string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EgaFemaleContestant>
+     */
+    public function getEgaFemaleContestants(): Collection
+    {
+        return $this->egaFemaleContestants;
+    }
+
+    public function addEgaFemaleContestant(EgaFemaleContestant $egaFemaleContestant): self
+    {
+        if (!$this->egaFemaleContestants->contains($egaFemaleContestant)) {
+            $this->egaFemaleContestants->add($egaFemaleContestant);
+            $egaFemaleContestant->setRegistration($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEgaFemaleContestant(EgaFemaleContestant $egaFemaleContestant): self
+    {
+        if ($this->egaFemaleContestants->removeElement($egaFemaleContestant)) {
+            // set the owning side to null (unless already changed)
+            if ($egaFemaleContestant->getRegistration() === $this) {
+                $egaFemaleContestant->setRegistration(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EgaMaleContestant>
+     */
+    public function getEgaMaleContestants(): Collection
+    {
+        return $this->egaMaleContestants;
+    }
+
+    public function addEgaMaleContestant(EgaMaleContestant $egaMaleContestant): self
+    {
+        if (!$this->egaMaleContestants->contains($egaMaleContestant)) {
+            $this->egaMaleContestants->add($egaMaleContestant);
+            $egaMaleContestant->setRegistration($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEgaMaleContestant(EgaMaleContestant $egaMaleContestant): self
+    {
+        if ($this->egaMaleContestants->removeElement($egaMaleContestant)) {
+            // set the owning side to null (unless already changed)
+            if ($egaMaleContestant->getRegistration() === $this) {
+                $egaMaleContestant->setRegistration(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MesseFemaleContestant>
+     */
+    public function getMesseFemaleContestants(): Collection
+    {
+        return $this->messeFemaleContestants;
+    }
+
+    public function addMesseFemaleContestant(MesseFemaleContestant $messeFemaleContestant): self
+    {
+        if (!$this->messeFemaleContestants->contains($messeFemaleContestant)) {
+            $this->messeFemaleContestants->add($messeFemaleContestant);
+            $messeFemaleContestant->setRegistration($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMesseFemaleContestant(MesseFemaleContestant $messeFemaleContestant): self
+    {
+        if ($this->messeFemaleContestants->removeElement($messeFemaleContestant)) {
+            // set the owning side to null (unless already changed)
+            if ($messeFemaleContestant->getRegistration() === $this) {
+                $messeFemaleContestant->setRegistration(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MesseMaleContestant>
+     */
+    public function getMesseMaleContestants(): Collection
+    {
+        return $this->messeMaleContestants;
+    }
+
+    public function addMesseMaleContestant(MesseMaleContestant $messeMaleContestant): self
+    {
+        if (!$this->messeMaleContestants->contains($messeMaleContestant)) {
+            $this->messeMaleContestants->add($messeMaleContestant);
+            $messeMaleContestant->setRegistration($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMesseMaleContestant(MesseMaleContestant $messeMaleContestant): self
+    {
+        if ($this->messeMaleContestants->removeElement($messeMaleContestant)) {
+            // set the owning side to null (unless already changed)
+            if ($messeMaleContestant->getRegistration() === $this) {
+                $messeMaleContestant->setRegistration(null);
+            }
+        }
 
         return $this;
     }
