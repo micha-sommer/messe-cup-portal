@@ -72,3 +72,6 @@ welcome:
   contact-us: 'Bei Fragen kontaktiere uns:'
   overview:
       registration: Kontaktdaten
+      contestant:
+          ega: EGA-Pokal
+          messe: Messe-Cup

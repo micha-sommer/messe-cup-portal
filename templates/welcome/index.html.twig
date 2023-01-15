@@ -16,75 +16,67 @@
 {#                {{ 'welcome.overview.send-confirmation'|trans }}#}
 {#            </a>#}
 {#            <hr class="my-4">#}
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div class="row row-cols-1 row-cols-md-2">
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{ 'welcome.overview.registration'|trans }}</h5>
-                            <p class="card-text m-0">
-                                <small class="text-muted align-bottom">{{ 'registration.data.email'|trans }}</small>
-                            </p>
-                            <p class="card-text m-0">
-                                {{ registration.email }}
-                            </p>
-                            <p class="card-text m-0">
-                                <small class="text-muted align-bottom">{{ 'registration.data.club'|trans }}</small>
-                            </p>
-                            <p class="card-text m-0">
-                                {{ registration.club }} ({{ registration.country }})
-                            </p>
-                            <p class="card-text m-0">
-                                <small class="text-muted align-bottom">{{ 'registration.data.contact-person'|trans }}</small>
-                            </p>
-                            <p class="card-text m-0">
-                                {{ registration.firstName }} {{ registration.lastName }}
-                            </p>
-                            <p class="card-text m-0">
-                                <small class="text-muted align-bottom">{{ 'registration.data.telephone'|trans }}</small>
-                            </p>
-                            <p class="card-text m-0">
-                                {{ registration.telephone }}
-                            </p>
+                            <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.female'|trans }}</h5>
                         </div>
+                        <ul class="list-group list-group-flush">
+                            {% for contestant in registration.messeFemaleContestants %}
+                                <li class="list-group-item d-flex justify-content-between">
+                                    {{ contestant.firstName }} {{ contestant.lastName }}
+                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
-{#                <div class="col">#}
-{#                    <div class="card">#}
-{#                        <div class="card-body">#}
-{#                            <h5 class="card-title">{{ 'welcome.overview.contestants'|trans }}</h5>#}
-{#                        </div>#}
-{#                        <ul class="list-group list-group-flush">#}
-{#                            {% for contestant in contestants %}#}
-{#                                <li class="list-group-item d-flex justify-content-between">#}
-{#                                    {{ contestant.firstName }} {{ contestant.lastName }}#}
-{#                                    <div>#}
-{#                                        <span class="badge bg-info">{{ "participants.contestants.data.age-category.#{ contestant.ageCategory }"|trans }}</span>#}
-{#                                        <span class="badge bg-primary">{{ contestant.weightCategory }}</span>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col">#}
-{#                    <div class="card" id="officials-list">#}
-{#                        <div class="card-body">#}
-{#                            <h5 class="card-title">{{ 'welcome.overview.officials'|trans }}</h5>#}
-{#                        </div>#}
-{#                        <ul class="list-group list-group-flush">#}
-{#                            {% for official in officials %}#}
-{#                                <li class="list-group-item d-flex justify-content-between">#}
-{#                                    {{ official.firstName }} {{ official.lastName }}#}
-{#                                    <div>#}
-{#                                        <span class="badge bg-primary">#}
-{#                                            {{ "participants.officials.data.role.#{ official.role }"|trans }}#}
-{#                                        </span>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.male'|trans }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for contestant in registration.messeMaleContestants %}
+                                <li class="list-group-item d-flex justify-content-between">
+                                    {{ contestant.firstName }} {{ contestant.lastName }}
+                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.female'|trans }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for contestant in registration.egaFemaleContestants %}
+                                <li class="list-group-item d-flex justify-content-between">
+                                    {{ contestant.firstName }} {{ contestant.lastName }}
+                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.male'|trans }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for contestant in registration.egaMaleContestants %}
+                                <li class="list-group-item d-flex justify-content-between">
+                                    {{ contestant.firstName }} {{ contestant.lastName }}
+                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
             <hr class="my-4">
             <p>{{ 'welcome.contact-us'|trans }}</p>
