@@ -49,7 +49,7 @@ class MesseFemaleContestantType extends AbstractType
                     '-57' => '-57',
                     '-63' => '-63',
                     '-70' => '-70',
-                    '+73' => '+73',
+                    '+70' => '+70',
                 ]
             ])
             ->add('comment', HiddenType::class, ['attr'=> ['class' => 'hidden-comment']])
