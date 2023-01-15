@@ -40,6 +40,9 @@ contestant:
         comment:
             title: 'Kommentar hinzufügen'
             for: 'Kommentar für'
+    status:
+        created: 'nicht gespeichert'
+        saved: 'gespeichert und angemeldet'
 global:
     forms:
         button:

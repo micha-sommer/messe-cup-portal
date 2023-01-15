@@ -40,6 +40,9 @@ contestant:
         comment:
             title: 'add a comment'
             for: 'comment for'
+    status:
+        created: 'not yet saved'
+        saved: 'saved and registered'
 global:
     forms:
         button:
