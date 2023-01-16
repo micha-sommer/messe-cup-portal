@@ -1,3 +1,20 @@
+admin:
+    title: Admin
+    data:
+        id: ID
+        country: Nation
+        club: Club
+        ega: ega
+        messe: Messe
+    club:
+        confirm-delete: "Are you sure you want to delete {club} and all its registered contestants?"
+    action:
+        title: 'Action'
+        login: 'Login as User'
+    ega:
+        title: 'Overview contestants EGA-Pokal'
+    messe:
+        title: 'Overview contestants Messe-Cup'
 base:
   language:
     title: language
@@ -8,11 +25,17 @@ base:
     about-us: 'about us'
     privacy: privacy
   menu:
+    admin:
+      title: Admin
+      index: Overview
+      ega: EGA-Pokal
+      messe: Messe-Cup
     home: Home
     register: Register
     registration_edit: 'Contact Information'
     login: Login
     logout: Logout
+    exit-impersonation: 'Back to Admin'
     contestant:
         ega: EGA-Pokal
         messe: Messe-Cup

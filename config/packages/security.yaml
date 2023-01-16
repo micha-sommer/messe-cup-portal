@@ -27,11 +27,14 @@ security:
             # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+            switch_user: { role: ROLE_ADMIN }
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/(%app.supported_locales%)/admin/?$, roles: ROLE_ADMIN }
+        - { path: ^/(%app.supported_locales%)/admin/ega/?$, roles: ROLE_ADMIN }
+        - { path: ^/(%app.supported_locales%)/admin/messe/?$, roles: ROLE_ADMIN }
         - { path: ^/(%app.supported_locales%)/contestants/ega/female/edit/?$, roles: ROLE_USER }
         - { path: ^/(%app.supported_locales%)/contestants/ega/male/edit/?$, roles: ROLE_USER }
         - { path: ^/(%app.supported_locales%)/contestants/messe/female/edit/?$, roles: ROLE_USER }

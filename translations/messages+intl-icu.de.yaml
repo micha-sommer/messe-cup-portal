@@ -1,3 +1,20 @@
+admin:
+    title: Admin
+    data:
+        id: ID
+        country: Nation
+        club: Verein
+        ega: ega
+        messe: Messe
+    club:
+        confirm-delete: "Bist du sicher, dass du die Anmeldung für {club} und alle seine gemeldeten Teilnehmer löschen möchtest?"
+    action:
+        title: 'Aktion'
+        login: 'Als dieser Nutzer einloggen'
+    ega:
+        title: 'Übersicht Teilnehmer_innen EGA-Pokal'
+    messe:
+        title: 'Übersicht Teilnehmer_innen Messe-Cup'
 base:
   language:
     title: Sprache
@@ -8,11 +25,17 @@ base:
     about-us: Impressum
     privacy: Datenschutz
   menu:
+    admin:
+      title: Admin
+      index: Übersicht
+      ega: EGA-Pokal
+      messe: Messe-Cup
     home: Start
     register: Registrieren
     registration_edit: Kontaktdaten
     login: Einloggen
     logout: Ausloggen
+    exit-impersonation: 'Zurück zum Admin'
     contestant:
         ega: EGA-Pokal
         messe: Messe-Cup
