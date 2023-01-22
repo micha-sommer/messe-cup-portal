@@ -1,29 +1,35 @@
 admin:
-    title: Admin
-    data:
-        id: ID
-        country: Nation
-        club: Verein
-        ega: ega
-        messe: Messe
-    club:
-        confirm-delete: "Bist du sicher, dass du die Anmeldung für {club} und alle seine gemeldeten Teilnehmer löschen möchtest?"
-    action:
-        title: 'Aktion'
-        login: 'Als dieser Nutzer einloggen'
-    ega:
-        title: 'Übersicht Teilnehmer_innen EGA-Pokal'
-    messe:
-        title: 'Übersicht Teilnehmer_innen Messe-Cup'
+  title: Admin
+  data:
+    id: ID
+    country: Nation
+    club: Verein
+    ega: ega
+    messe: Messe
+  club:
+    confirm-delete: "Bist du sicher, dass du die Anmeldung für {club} und alle seine gemeldeten Teilnehmer löschen möchtest?"
+  action:
+    title: 'Aktion'
+    login: 'Als dieser Nutzer einloggen'
+  ega:
+    title: 'Übersicht Teilnehmer_innen EGA-Pokal'
+  messe:
+    title: 'Übersicht Teilnehmer_innen Messe-Cup'
 base:
   language:
     title: Sprache
     de: Deutsch
     en: Englisch
-  link-text:
-    homepage: 'Homepage des EJC'
-    about-us: Impressum
-    privacy: Datenschutz
+  footer:
+    homepage:
+      title: 'Webseite des EJC'
+      link: https://erfurter-judo-club.de
+    about-us:
+      title: Impressum
+      link: https://erfurter-judo-club.de/impressum
+    privacy:
+      title: Datenschutz
+      link: https://erfurter-judo-club.de/datenschutz
   menu:
     admin:
       title: Admin
@@ -37,76 +43,85 @@ base:
     logout: Ausloggen
     exit-impersonation: 'Zurück zum Admin'
     contestant:
-        ega: EGA-Pokal
-        messe: Messe-Cup
+      ega: EGA-Pokal
+      messe: Messe-Cup
 contestant:
+  title:
+    ega: EGA-Pokal
+    messe: Messe-Cup
+  description: 'Bitte trage so viele Informationen ein, wie du kannst.'
+  data:
     title:
-        ega: EGA-Pokal
-        messe: Messe-Cup
-    description: 'Bitte trage so viele Informationen ein, wie du kannst.'
-    data:
-        title:
-            male: Teilnehmer
-            female: Teilnehmerin
-        name: Name
-        first-name: Vorname
-        last-name: Nachname
-        year: Jahrgang
-        gender:
-            title: Geschlecht
-            male: männlich
-            female: weiblich
-        age-category:
-            title: Altersklasse
-            ega: U13
-            messe: U16
-        weight-category: Gewichtsklasse
-        comment:
-            title: 'Kommentar hinzufügen'
-            for: 'Kommentar für'
-    status:
-        created: 'nicht gespeichert'
-        saved: 'gespeichert und angemeldet'
+      male: Teilnehmer
+      female: Teilnehmerin
+    name: Name
+    first-name: Vorname
+    last-name: Nachname
+    year: Jahrgang
+    gender:
+      title: Geschlecht
+      male: männlich
+      female: weiblich
+    age-category:
+      title: Altersklasse
+      ega: U13
+      messe: U16
+    weight-category: Gewichtsklasse
+    comment:
+      title: 'Kommentar hinzufügen'
+      for: 'Kommentar für'
+  status:
+    created: 'nicht gespeichert'
+    saved: 'gespeichert und angemeldet'
 global:
-    forms:
-        button:
-            save: Speichern
-            back: Zurück
-        unsaved-changes-warning: 'Du hast ungespeicherte Änderungen auf dieser Seite. Wenn du die Seite verlässt, gehen diese Änderungen verloren!'
+  forms:
+    button:
+      save: Speichern
+      back: Zurück
+    unsaved-changes-warning: 'Du hast ungespeicherte Änderungen auf dieser Seite. Wenn du die Seite verlässt, gehen diese Änderungen verloren!'
 login:
-    title: Einloggen
-    description: 'Bitte trage deine Email-Adresse und dein Passwort ein, mit welchen du deinen Verband/Verein registriert hast.'
-    action: einloggen
+  title: Einloggen
+  description: 'Bitte trage deine Email-Adresse und dein Passwort ein, mit welchen du deinen Verband/Verein registriert hast.'
+  action: einloggen
 registration:
-    data:
-        email: Email
-        password: Passwort
-        club: Verein
-        country: Land
-        contact-person: Ansprechpartner
-        first-name: Vorname
-        last-name: Nachname
-        telephone: Telefon
-    edit:
-        title: 'Kontaktdaten bearbeiten'
-        description: 'Trage hier deine Kontaktdaten ein. Deine Email-Adresse kannst du leider nicht ändern. Wenn du dies wirklich brauchst, kontaktiere uns.'
-        delete: 'Diese Registrierung löschen'
-        password:
-            title: 'Passwort ändern'
-            description: 'Hier kannst du dein Passwort für den Login ändern. Passwörter müssen mindestens 6 Zeichen lang sein.'
-        confirm-delete: "Bist du sicher, die Registrierung für {club} löschen zu wollen?"
-    new:
-        title: Registrierung
-        description: 'Trage hier deine Kontaktdaten ein. Wenn du dich mit deinen Daten registriert hast, kannst du Wettkämpfer und Wettkämpferinnen anmelden.'
-        action: registrieren
+  data:
+    email: Email
+    password: Passwort
+    club: Verein
+    country: Land
+    contact-person: Ansprechpartner
+    first-name: Vorname
+    last-name: Nachname
+    telephone: Telefon
+  edit:
+    title: 'Kontaktdaten bearbeiten'
+    description: 'Trage hier deine Kontaktdaten ein. Deine Email-Adresse kannst du leider nicht ändern. Wenn du dies wirklich brauchst, kontaktiere uns.'
+    delete: 'Diese Registrierung löschen'
+    password:
+      title: 'Passwort ändern'
+      description: 'Hier kannst du dein Passwort für den Login ändern. Passwörter müssen mindestens 6 Zeichen lang sein.'
+    confirm-delete: "Bist du sicher, die Registrierung für {club} löschen zu wollen?"
+  new:
+    title: Registrierung
+    description: 'Trage hier deine Kontaktdaten ein. Wenn du dich mit deinen Daten registriert hast, kannst du Wettkämpfer und Wettkämpferinnen anmelden.'
+    action: registrieren
 welcome:
   title: 'Willkommen zum Messe-Cup und EGA-Pokal'
   greeting: Hallo!
   inactive: 'Aktuell ist die Anmeldung für den Messe-Cup und EGA-Pokal nicht möglich.'
   active: 'Dies ist das neue Anmeldeformular für die Registrierung zum Messe-Cup und EGA-Pokal {year}.'
-  contact-us: 'Bei Fragen kontaktiere uns:'
+  contact-us:
+    title: 'Bei Fragen kontaktiere uns:'
+    name: 'Erfurter Judo-Club e.V.'
+    street: 'In der Lutsche 10'
+    zipcode: 99097
+    city: Erfurt
+    phone:
+      data: '0049-361-4233914'
+      display: '+49 361 - 4233914'
+    email: info@erfurter-judo-club.de
   overview:
-      registration: Kontaktdaten
-      contestant:
-          ega: EGA-Pokal
-          messe: Messe-Cup
+    registration: Kontaktdaten
+    contestant:
+      ega: EGA-Pokal
+      messe: Messe-Cup

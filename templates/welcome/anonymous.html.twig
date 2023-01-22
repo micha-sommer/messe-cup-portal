@@ -131,13 +131,17 @@
 {#                </div>#}
 {#            </div>#}
 {#            <hr class="my-4">#}
-            <p>{{ 'welcome.contact-us'|trans }}</p>
-            <p>Thüringer Judo-Verband e.V.<br/>
-                Schützenstraße 4<br/>
-                99096 Erfurt<br/>
-                <a class="fa fa-phone" href="tel:0049-0361-3731647"> +49 (0) 361 373 16 47</a><br/>
-                <a class="fa fa-envelope" href="mailto:info@thueringer-judoverband.de">
-                    info@thueringer-judoverband.de</a><br/>
+            <p>{{ 'welcome.contact-us.title'|trans }}</p>
+            <p>
+                {{ 'welcome.contact-us.name'|trans }}<br/>
+                {{ 'welcome.contact-us.street'|trans }}<br/>
+                {{ 'welcome.contact-us.zipcode'|trans }} {{ 'welcome.contact-us.city'|trans }}<br/>
+                <a class="fa fa-phone" href="tel:{{ 'welcome.contact-us.phone.data'|trans }}">
+                    {{ 'welcome.contact-us.phone.display'|trans }}
+                </a><br/>
+                <a class="fa fa-envelope" href="mailto:{{ 'welcome.contact-us.email'|trans }}">
+                    {{ 'welcome.contact-us.email'|trans }}
+                </a><br/>
             </p>
         </div>
     </div>

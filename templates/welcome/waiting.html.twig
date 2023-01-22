@@ -52,6 +52,19 @@
         <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
         <hr class="my-4">
         <p class="lead">{{ 'welcome.inactive'|trans }}</p>
+        <hr class="my-4">
+        <p>{{ 'welcome.contact-us.title'|trans }}</p>
+        <p>
+            {{ 'welcome.contact-us.name'|trans }}<br/>
+            {{ 'welcome.contact-us.street'|trans }}<br/>
+            {{ 'welcome.contact-us.zipcode'|trans }} {{ 'welcome.contact-us.city'|trans }}<br/>
+            <a class="fa fa-phone" href="tel:{{ 'welcome.contact-us.phone.data'|trans }}">
+                {{ 'welcome.contact-us.phone.display'|trans }}
+            </a><br/>
+            <a class="fa fa-envelope" href="mailto:{{ 'welcome.contact-us.email'|trans }}">
+                {{ 'welcome.contact-us.email'|trans }}
+            </a><br/>
+        </p>
     </div>
 </div>
 
@@ -64,16 +77,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active"
-                       href="https://thueringer-judoverband.de/home/">{{ 'base.link-text.homepage'|trans }}</a>
+                    <a class="nav-link" href="{{ 'base.footer.homepage.link'|trans }}">
+                        {{ 'base.footer.homepage.title'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active"
-                       href="https://www.thueringer-judoverband.de/navigation-footer/impressum/">{{ 'base.link-text.about-us'|trans }}</a>
+                    <a class="nav-link" href="{{ 'base.footer.about-us.link'|trans }}">
+                        {{ 'base.footer.about-us.title'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active"
-                       href="https://www.thueringer-judoverband.de/links/datenschutz/">{{ 'base.link-text.privacy'|trans }}</a>
+                    <a class="nav-link" href="{{ 'base.footer.privacy.link'|trans }}">
+                        {{ 'base.footer.privacy.title'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
