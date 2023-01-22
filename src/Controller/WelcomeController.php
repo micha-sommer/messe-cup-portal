@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use App\Repository\RegistrationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class WelcomeController extends AbstractController
 {
+    public function __construct(private readonly RegistrationRepository $registrationRepository)
+    {
+    }
+
     #[Route('/')]
     public function indexNoLocale(): Response
     {
@@ -49,6 +54,10 @@ class WelcomeController extends AbstractController
 
     public function activeAnonymousWelcome(): Response
     {
-        return $this->render('welcome/anonymous.html.twig');
+        $distinctCountries = $this->registrationRepository->findDistinctCountries();
+
+        return $this->render('welcome/anonymous.html.twig', [
+            'countries' => $distinctCountries,
+        ]);
     }
 }

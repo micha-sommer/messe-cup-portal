@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Contestant;
 use App\Entity\Registration;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -54,5 +55,21 @@ class RegistrationRepository extends ServiceEntityRepository implements Password
         $user->setPassword($newHashedPassword);
 
         $this->save($user, true);
+    }
+
+    public function findDistinctCountries(): array
+    {
+        $query = $this->createQueryBuilder('r');
+
+        $result = $query
+            ->select('r.country')
+            ->distinct()
+            ->getQuery()
+            ->getArrayResult()
+        ;
+
+        return array_map(static function ($a) {
+            return $a['country'];
+        }, $result);
     }
 }

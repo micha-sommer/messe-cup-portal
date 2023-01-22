@@ -11,12 +11,12 @@
                 <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
             {% endif %}
             <hr class="my-4">
-{#            <figure class="figure">#}
-{#                {% for country in countries %}#}
-{#                    <img src="{{ asset('images/Flag_of_%s.svg'|format(country)) }}"#}
-{#                         class="rounded float-left mb-2 ml-2" height="50" alt="{{ country }}">#}
-{#                {% endfor %}#}
-{#            </figure>#}
+            <figure class="figure">
+                {% for country in countries %}
+                    <img src="{{ asset('images/Flag_of_%s.svg'|format(country)) }}"
+                         class="rounded float-left mb-2 ml-2" height="50" alt="{{ country }}">
+                {% endfor %}
+            </figure>
 {#            <p>{{ 'welcome.contestants'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>#}
 {#            <div class="card-group">#}
 {#                <div class="card text-bg-dark">#}
@@ -130,7 +130,7 @@
 {#                    </div>#}
 {#                </div>#}
 {#            </div>#}
-{#            <hr class="my-4">#}
+            <hr class="my-4">
             <p>{{ 'welcome.contact-us.title'|trans }}</p>
             <p>
                 {{ 'welcome.contact-us.name'|trans }}<br/>
