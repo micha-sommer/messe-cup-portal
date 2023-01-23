@@ -34,7 +34,7 @@ class EgaFemaleContestant
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comment = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contestants')]
+    #[ORM\ManyToOne(inversedBy: 'egaFemaleContestants')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Registration $registration = null;
 
