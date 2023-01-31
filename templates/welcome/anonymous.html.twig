@@ -17,119 +17,114 @@
                          class="rounded float-left mb-2 ml-2" height="50" alt="{{ country }}">
                 {% endfor %}
             </figure>
-{#            <p>{{ 'welcome.contestants'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>#}
-{#            <div class="card-group">#}
-{#                <div class="card text-bg-dark">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">{{ 'welcome.overview.age-category.cadet'|trans }}</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['total'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-40</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-40'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-44</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-44'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-48</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-48'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-52</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-52'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-57</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-57'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-63</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-63'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-70</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['-70'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">+70</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['cadet']['+70'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="card-group">#}
-{#                <div class="card text-bg-dark">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">{{ 'welcome.overview.age-category.junior'|trans }}</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['total'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-44</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-44'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-48</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-48'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-52</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-52'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-57</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-57'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-63</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-63'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-70</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-70'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">-78</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['-78'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">+78</h5>#}
-{#                        <h5><span class="badge bg-primary">{{ categories['junior']['+78'] }}</span></h5>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
+            <hr class="my-4">
+            <p>{{ 'welcome.overview.contestant.description'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>{{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.female'|trans }}</div>
+                                <span class="badge rounded-pill text-bg-danger">
+                                {{ categories['messe']['female']['total'] }}
+                            </span>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for category, amount in categories['messe']['female'] %}
+                                {% if category != 'total' %}
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>{{ category }}</div>
+                                            <span class="badge rounded-pill text-bg-warning">
+                                            {{ amount }}
+                                        </span>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>{{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.male'|trans }}</div>
+                                <span class="badge rounded-pill text-bg-primary">
+                                {{ categories['messe']['male']['total'] }}
+                            </span>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for category, amount in categories['messe']['male'] %}
+                                {% if category != 'total' %}
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>{{ category }}</div>
+                                            <span class="badge rounded-pill text-bg-info">
+                                            {{ amount }}
+                                        </span>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                            <div>{{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.female'|trans }}</div>
+                            <span class="badge rounded-pill text-bg-danger">
+                                {{ categories['ega']['female']['total'] }}
+                            </span>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for category, amount in categories['ega']['female'] %}
+                                {% if category != 'total' %}
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>{{ category }}</div>
+                                            <span class="badge rounded-pill text-bg-warning">
+                                            {{ amount }}
+                                        </span>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>{{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.male'|trans }}</div>
+                                <span class="badge rounded-pill text-bg-primary">
+                                {{ categories['ega']['male']['total'] }}
+                            </span>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for category, amount in categories['ega']['male'] %}
+                                {% if category != 'total' %}
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>{{ category }}</div>
+                                            <span class="badge rounded-pill text-bg-info">
+                                            {{ amount }}
+                                        </span>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <hr class="my-4">
             <p>{{ 'welcome.contact-us.title'|trans }}</p>
             <p>

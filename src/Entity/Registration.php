@@ -68,7 +68,7 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany
     (mappedBy: 'registration',
-    targetEntity: MesseFemaleContestant::class,
+        targetEntity: MesseFemaleContestant::class,
         cascade: ["persist", "remove"],
         orphanRemoval: true,
     )]
@@ -350,5 +350,23 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function getContestants(): ArrayCollection
+    {
+        $all = new ArrayCollection();
+        foreach ($this->getEgaFemaleContestants() as $contestant) {
+            $all->add($contestant);
+        }
+        foreach ($this->getEgaMaleContestants() as $contestant) {
+            $all->add($contestant);
+        }
+        foreach ($this->getMesseFemaleContestants() as $contestant) {
+            $all->add($contestant);
+        }
+        foreach ($this->getMesseMaleContestants() as $contestant) {
+            $all->add($contestant);
+        }
+        return $all;
     }
 }

@@ -125,3 +125,4 @@ welcome:
     contestant:
       ega: EGA-Pokal
       messe: Messe-Cup
+      description: '<strong>{total}</strong> registered competitors from <strong>{clubs}</strong> clubs/nations in the following categories:'
