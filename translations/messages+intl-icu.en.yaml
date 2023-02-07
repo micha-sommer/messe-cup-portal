@@ -12,7 +12,7 @@ admin:
     title: 'Action'
     login: 'Login as User'
   ega:
-    title: 'Overview contestants EGA-Pokal'
+    title: 'Overview contestants ega-Pokal'
   messe:
     title: 'Overview contestants Messe-Cup'
 base:
@@ -34,7 +34,7 @@ base:
     admin:
       title: Admin
       index: Overview
-      ega: EGA-Pokal
+      ega: ega-Pokal
       messe: Messe-Cup
     home: Home
     register: Register
@@ -43,11 +43,11 @@ base:
     logout: Logout
     exit-impersonation: 'Back to Admin'
     contestant:
-      ega: EGA-Pokal
+      ega: ega-Pokal
       messe: Messe-Cup
 contestant:
   title:
-    ega: EGA-Pokal
+    ega: ega-Pokal
     messe: Messe-Cup
   description: 'Please enter as much information as you have available for the time being.'
   data:
@@ -106,10 +106,10 @@ registration:
     description: "Register here! In order to proceed with the registration, we will need a contact person. This information is also required for later changes that might or might not be needed. Once you've registered your club, you can add your contestants."
     action: register
 welcome:
-  title: 'Welcome to Messe-Cup and EGA-Pokal'
+  title: 'Welcome to Messe-Cup and ega-Pokal'
   greeting: Hello!
-  inactive: 'Registration for the Messe-Cup and EGA-Pokal is currently not possible.'
-  active: 'This is the new entry form for the registration process of Messe-Cup and EGA-Pokal {year}.'
+  inactive: 'Registration for the Messe-Cup and ega-Pokal is currently not possible.'
+  active: 'This is the new entry form for the registration process of Messe-Cup and ega-Pokal {year}.'
   contact-us:
     title: 'Feel free to contact us:'
     name: 'Erfurter Judo-Club e.V.'
@@ -123,6 +123,6 @@ welcome:
   overview:
     registration: 'Contact Information'
     contestant:
-      ega: EGA-Pokal
+      ega: ega-Pokal
       messe: Messe-Cup
       description: '<strong>{total}</strong> registered competitors from <strong>{clubs}</strong> clubs/nations in the following categories:'

@@ -1,0 +1,103 @@
+<style>
+    td {
+    }
+</style>
+
+<table border="0" style="width: 100%; ">
+    <tr>
+        <td colspan="3">
+            &nbsp;<br>
+            <h2>{{ messe_count }}. Internationaler Thüringer Messe-Cup {{ year }}</h2>
+            <h2>{{ ega_count }}. Internationaler ega-Pokal {{ year }}</h2>
+            &nbsp;<br>
+        </td>
+        <td>
+            <img src="{{ asset('images/Logo-Erfurter-Judoclub.jpg') }}"
+                 height="inherit"
+                 alt="Logo:EJC">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td style="width: 60%" colspan="2">{{ registration.club }}<br>{{ registration.firstName }} {{ registration.lastName }}</td>
+        <td style="width: 40%" colspan="2">
+            Erfurter Judo-Club e.V.<br>
+            In der Lutsche 10<br>
+            99097 Erfurt / GERMANY <br>
+            info@erfurter-judo-club.de
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td align="right" colspan="4">Erfurt, {{ "now"|date("d.m.Y"|trans) }}</td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td style="width: 45%"><u><b>Rechnung</b></u></td>
+        <td style="width: 15%"></td>
+        <td style="border: 1px solid black; width: 24%">Rechnungsnummer:</td>
+        <td style="border: 1px solid black; width: 16%; text-align: center; ">
+            <b>{{ "%03d"|format(registration.id) }}</b>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td style="border-bottom: 1px solid black; width: 45%"><b>Position</b></td>
+        <td style="border-bottom: 1px solid black; width: 15%" align="right"><b>Einzelpreis</b></td>
+        <td style="border-bottom: 1px solid black; width: 12%" align="right"><b>Anzahl</b></td>
+        <td style="border-bottom: 1px solid black; width: 28%" align="right"><b>Gesamtpreis</b></td>
+    </tr>
+    <tr>
+        {% set messeContestantsCount = registration.messeFemaleContestants.count + registration.messeMaleContestants.count %}
+        <td style="width: 45%">Startgeld Messe-Cup</td>
+        <td style="width: 15%" align="right">15,00 €</td>
+        <td style="width: 12%" align="right">{{ messeContestantsCount }}</td>
+        <td style="width: 28%" align="right">{{ (15*messeContestantsCount)|number_format(2,',','.') }} €</td>
+    </tr>
+    <tr>
+        {% set egaContestantsCount = registration.egaFemaleContestants.count + registration.egaMaleContestants.count %}
+        <td style="width: 45%">Startgeld ega-Pokal</td>
+        <td style="width: 15%" align="right">13,00 €</td>
+        <td style="width: 12%" align="right">{{ egaContestantsCount }}</td>
+        <td style="width: 28%" align="right">{{ (13*egaContestantsCount)|number_format(2,',','.') }} €</td>
+    </tr>
+    <tr>
+        <td style="border-bottom: 1px solid black;" colspan="4"></td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td style="width: 45%"></td>
+        <td style="width: 15%"></td>
+        <td style="border: 1px solid black; width: 12%"><b>Gesamt:</b></td>
+        <td style="border: 1px solid black; width: 28%; text-align: right">
+            <b>{{ (15*messeContestantsCount+13*egaContestantsCount)|number_format(2,',','.') }} €</b></td>
+    </tr>
+    <tr>
+        <td style="height: 50px" colspan="4"></td>
+    </tr>
+    <tr>
+        <td style="text-align: right"><b>Betrag überweisen an:</b></td>
+        <td colspan="3">
+            Erfurter Judo-Club e. V.<br>
+            Sparkasse Mittelthüringen<br>
+            IBAN: DE90 8205 1000 0130 0993 76<br>
+            Swift code (BIC): HELADEF1WEM<br>
+            <b>Bitte Rechnungsnummer angeben!</b><br>
+            <br>
+            Preis ist ohne Überweisungsgebühren!!!
+        </td>
+    </tr>
+</table>

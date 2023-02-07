@@ -64,6 +64,12 @@
                                href="{{ path('welcome', {'_switch_user': registration.email }) }}">
                                 <i class="fas fa-sign-in-alt"></i>
                             </a>
+                            <a class="btn btn-info" role="button"
+                               data-toggle="tooltip" data-placement="top"
+                               title="Rechnungsdokument anschauen"
+                               href="{{ path('invoice_show', {'id': registration.id}) }}">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

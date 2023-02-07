@@ -3,6 +3,8 @@ twig:
 
     globals:
         year: 2023
+        messe_count: 23
+        ega_count: 28
         endDate: 'March 15, 2023 23:59'
 
     form_themes: ['bootstrap_5_layout.html.twig']
