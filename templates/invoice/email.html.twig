@@ -1,0 +1,127 @@
+{% apply inky_to_html|inline_css(source('@css/foundation-emails.css')) %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--suppress CssOverwrittenProperties, CssUnusedSymbol, CssFloatPxLength -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Title</title>
+    <style type="text/css">
+        body,
+        html,
+        .body {
+            background: #f3f3f3 !important;
+        }
+    </style>
+</head>
+
+<body>
+<style type="text/css">
+    body,
+    html,
+    .body {
+        background: #f3f3f3 !important;
+    }
+
+    .text-right { text-align: right; }
+</style>
+<!-- move the above styles into your custom stylesheet -->
+
+<spacer size="16"></spacer>
+
+<container>
+
+    <spacer size="16"></spacer>
+
+    <row>
+        <columns>
+            <h1>{{ title }}</h1>
+            <p>{{ greeting }}</p>
+
+            <spacer size="16"></spacer>
+
+            <callout class="secondary">
+                <row>
+                    <columns large="6">
+                        <p>
+                            <strong>{{ 'registration.data.club'|trans({}, 'messages', requestLocale) }}</strong><br/>
+                            {{ registration.club }}
+                        </p>
+                        <p>
+                            <strong>{{ 'registration.data.contact-person'|trans({}, 'messages', requestLocale) }}</strong><br/>
+                            {{ registration.firstName }} {{ registration.lastName }}
+                        </p>
+                        <p>
+                            <strong>{{ 'registration.data.email'|trans({}, 'messages', requestLocale) }}</strong><br/>
+                            {{ registration.email }}
+                        </p>
+                        <p>
+                            <strong>Rechnungsnummer</strong><br/>
+                            {{ "%03d"|format(registration.id) }}
+                        </p>
+                    </columns>
+                    <columns large="6">
+                        <p>
+                            <strong>{{ 'registration.data.country'|trans({}, 'messages', requestLocale) }}</strong><br/>
+                            {{ registration.country|country_name(requestLocale) }}
+                        </p>
+                        <p>
+                            <strong>{{ 'registration.data.telephone'|trans({}, 'messages', requestLocale) }}</strong><br/>
+                            {{ registration.telephone }}
+                        </p>
+                    </columns>
+                </row>
+            </callout>
+
+            <h4>{{ 'invoice.mail.positions'|trans({}, 'messages', requestLocale) }}</h4>
+
+            <table>
+                <tr>
+                    <th>{{ 'invoice.data.position.description'|trans({}, 'messages', requestLocale) }}</th>
+                    <th class="text-right">{{ 'invoice.data.position.price'|trans({}, 'messages', requestLocale) }}</th>
+                    <th class="text-right">{{ 'invoice.data.position.amount'|trans({}, 'messages', requestLocale) }}</th>
+                    <th class="text-right">{{ 'invoice.data.position.total'|trans({}, 'messages', requestLocale) }}</th>
+                </tr>
+                <tr>
+                    {% set messeContestantsCount = registration.messeFemaleContestants.count + registration.messeMaleContestants.count %}
+                    <td>Startgeld Messe-Cup</td>
+                    <td class="text-right">15,00 €</td>
+                    <td class="text-right">{{ messeContestantsCount }}</td>
+                    <td class="text-right">{{ (15*messeContestantsCount)|number_format(2,',','.') }} €</td>
+                </tr>
+                <tr>
+                    {% set egaContestantsCount = registration.egaFemaleContestants.count + registration.egaMaleContestants.count %}
+                    <td>Startgeld ega-Pokal</td>
+                    <td class="text-right">13,00 €</td>
+                    <td class="text-right">{{ egaContestantsCount }}</td>
+                    <td class="text-right">{{ (13*egaContestantsCount)|number_format(2,',','.') }} €</td>
+                </tr>
+                <tr>
+                    <th class="text-right" colspan="3">{{ 'invoice.data.total'|trans }}</th>
+                    <th class="text-right">{{ (15*messeContestantsCount+13*egaContestantsCount)|number_format(2,',','.') }} €</th>
+                </tr>
+            </table>
+        </columns>
+    </row>
+    <row>
+        <columns large="2">
+            <img src="{{ email.image('@images/Logo-Erfurter-Judoclub.jpg') }}" alt="EJC">
+        </columns>
+        <columns large="5">
+            <p>
+                Erfurter Judo-Club e.V.<br>
+                In der Lutsche 10<br>
+                99097 Erfurt
+            </p>
+        </columns>
+        <columns large="5">
+            <p>
+                E-Mail:<br/>
+                info@erfurter-judo-club.de
+            </p>
+        </columns>
+    </row>
+</container>
+</body>
+{% endapply %}

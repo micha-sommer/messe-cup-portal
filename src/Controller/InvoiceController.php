@@ -3,9 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Registration;
+use DateTime;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use TCPDF;
 
 #[Route('/{_locale<%app.supported_locales%>}/invoice')]
@@ -54,5 +60,45 @@ class InvoiceController extends AbstractController
         $html = $this->render('invoice/pdf.html.twig', ['registration' => $registration])->getContent();
         $pdf->writeHTML($html, true, false, true);
         return $pdf;
+    }
+
+    #[Route('/{id}/mail', name: 'invoice_send_mail')]
+    public function sendInvoicePerMail(
+        Request             $request,
+        Registration        $registration,
+        MailerInterface     $mailer,
+        TranslatorInterface $translator,
+    ): Response
+    {
+        $timestamp = new DateTime();
+        $name = $translator->trans('welcome.contact-us.name');
+        $subject = $translator->trans('invoice.mail.subject', [
+            'club' => $registration->getClub(),
+        ]);
+        $title = $translator->trans('invoice.mail.title', [
+            'name' => $registration->getFirstName() . ' ' . $registration->getLastName()
+        ]);
+        $greeting = $translator->trans('invoice.mail.greeting', [
+            'timestamp' => $timestamp,
+        ]);
+
+        $pdf = $this->getInvoicePDF($registration);
+        $data = $pdf->Output('Invoice_' . $registration->getClub() . '.pdf', 'S');
+        $mail = (new TemplatedEmail())
+            ->from(new Address('info@erfurter-judo-club.de', $name))
+            ->to($registration->getEmail())
+            ->subject($subject)
+            ->context([
+                'title' => $title,
+                'greeting' => $greeting,
+                'registration' => $registration,
+                'requestLocale' => $request->getLocale(),
+            ])
+            ->htmlTemplate('invoice/email.html.twig')
+            ->attach($data, 'Invoice_' . $registration->getClub() . '.pdf', 'application/pdf');
+
+        $mailer->send($mail);
+
+        return $this->redirectToRoute('welcome');
     }
 }

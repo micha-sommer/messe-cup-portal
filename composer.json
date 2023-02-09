@@ -41,7 +41,10 @@
         "symfony/web-link": "6.2.*",
         "symfony/yaml": "6.2.*",
         "tecnickcom/tcpdf": "^6.6",
+        "twig/cssinliner-extra": "^3.5",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/inky-extra": "^3.5",
+        "twig/intl-extra": "^3.5",
         "twig/twig": "^2.12|^3.0"
     },
     "config": {

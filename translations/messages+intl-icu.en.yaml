@@ -79,6 +79,19 @@ global:
       save: Save
       back: Back
     unsaved-changes-warning: "You have unsaved changes. Do you really want to leave and loose the data or stay and continue?"
+invoice:
+  data:
+    total: Total
+    position:
+      description: 'position description'
+      price: Price
+      amount: Amount
+      total: Subtotal
+  mail:
+    subject: 'Invoice for Messe-Cup/ega-Pokal: {club}'
+    title: 'Dear {name},'
+    greeting: 'please check the attached invoice. It has been created on {timestamp, date} {timestamp, time, short}. Any changes to your registration afterwards may not be accounted for.'
+    positions: Positions
 login:
   title: Login
   description: 'Please enter the email address and password that have been used to register your club/association/union.'
@@ -121,6 +134,7 @@ welcome:
       display: '+49 361 - 4233914'
     email: info@erfurter-judo-club.de
   overview:
+    send-invoice: 'Send Invoice'
     registration: 'Contact Information'
     contestant:
       ega: ega-Pokal

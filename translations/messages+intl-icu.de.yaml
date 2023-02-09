@@ -79,6 +79,19 @@ global:
       save: Speichern
       back: Zurück
     unsaved-changes-warning: 'Du hast ungespeicherte Änderungen auf dieser Seite. Wenn du die Seite verlässt, gehen diese Änderungen verloren!'
+invoice:
+  data:
+    total: Gesamt
+    position:
+      description: Positionsbeschreibung
+      price: Einzelpreis
+      amount: Menge
+      total: Summe
+  mail:
+    subject: "Rechnung Messe-Cup/ega-Pokal für {club}"
+    title: 'Hallo {name},'
+    greeting: 'bitte prüfe deine Rechnung. Diese Rechnung wurde am {timestamp, date} {timestamp, time, short} erzeugt. Änderungen, die danach vorgenommen wurden, sind darin nicht enthalten.'
+    positions: Positionen
 login:
   title: Einloggen
   description: 'Bitte trage deine Email-Adresse und dein Passwort ein, mit welchen du deinen Verband/Verein registriert hast.'
@@ -121,6 +134,7 @@ welcome:
       display: '+49 361 - 4233914'
     email: info@erfurter-judo-club.de
   overview:
+    send-invoice: 'Rechnung senden'
     registration: Kontaktdaten
     contestant:
       ega: ega-Pokal

@@ -1,6 +1,10 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
 
+    paths:
+      '%kernel.project_dir%/public/css': css
+      '%kernel.project_dir%/public/images': images
+
     globals:
         year: 2023
         messe_count: 23
