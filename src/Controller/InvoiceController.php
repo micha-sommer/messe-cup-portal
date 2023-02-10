@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Registration;
 use DateTime;
+use DateTimeZone;
+use Exception;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
@@ -62,6 +65,10 @@ class InvoiceController extends AbstractController
         return $pdf;
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     * @throws Exception
+     */
     #[Route('/{id}/mail', name: 'invoice_send_mail')]
     public function sendInvoicePerMail(
         Request             $request,
@@ -70,7 +77,7 @@ class InvoiceController extends AbstractController
         TranslatorInterface $translator,
     ): Response
     {
-        $timestamp = new DateTime();
+        $timestamp = new DateTime('now', new DateTimeZone('Europe/Berlin'));
         $name = $translator->trans('welcome.contact-us.name');
         $subject = $translator->trans('invoice.mail.subject', [
             'club' => $registration->getClub(),
