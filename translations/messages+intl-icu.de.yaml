@@ -16,6 +16,16 @@ admin:
   messe:
     title: 'Übersicht Teilnehmer_innen Messe-Cup'
 base:
+  alert:
+    deadline: 'Der Meldeschluss ist verstrichen! Beachte, dass das Anmelden weiterer Sportler oder Sportlerinnen mit der Berechnung einer erhöhten Startgebühr einhergeht.'
+    end-date: 'Anmeldezeitraum abgelaufen. Bitte teile uns Änderungen vor Ort mit.'
+    limit:
+      close:
+        messe: 'Messe-Cup: Nur noch wenige Startplätze verfügbar.'
+        ega: 'ega-Pokal: Nur noch wenige Startplätze verfügbar.'
+      exceeded:
+        messe: 'Messe-Cup: Keine Startplätze mehr verfügbar. Weitere Plätze werden nur noch auf Anfrage vergeben.'
+        ega: 'ega-Pokal: Keine Startplätze mehr verfügbar. Weitere Plätze werden nur noch auf Anfrage vergeben.'
   language:
     title: Sprache
     de: Deutsch
@@ -50,6 +60,10 @@ contestant:
     ega: ega-Pokal
     messe: Messe-Cup
   description: 'Bitte trage so viele Informationen ein, wie du kannst.'
+  action:
+    move:
+      title: Verschieben
+      to: 'Verschieben nach:'
   data:
     title:
       male: Teilnehmer
@@ -72,7 +86,8 @@ contestant:
       for: 'Kommentar für'
   status:
     created: 'nicht gespeichert'
-    saved: 'gespeichert und angemeldet'
+    saved: 'angemeldet'
+    late: 'angemeldet, aber erhöhtes Startgeld'
 global:
   forms:
     button:

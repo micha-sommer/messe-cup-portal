@@ -131,16 +131,33 @@
     </div>
 </nav>
 <main role="main" class="container">
-{#    {% if accommodation.getCurrentLimit < 50 %}#}
-{#        <div class="alert alert-danger" role="alert">#}
-{#            {{ 'base.alert.accommodation'|trans|raw }}#}
-{#        </div>#}
-{#    {% endif %}#}
-{#    {% if date('now', 'Europe/Paris') > date(deadline, 'Europe/Paris') %}#}
-{#        <div class="alert alert-danger" role="alert">#}
-{#            {{ 'base.alert.deadline'|trans }}#}
-{#        </div>#}
-{#    {% endif %}#}
+    {% if limit_service.messeCup <= 0 %}
+        <div class="alert alert-danger mb-0" role="alert">
+            {{ 'base.alert.limit.exceeded.messe'|trans }}
+        </div>
+    {% elseif limit_service.messeCup < 100 %}
+        <div class="alert alert-warning mb-0" role="alert">
+            {{ 'base.alert.limit.close.messe'|trans }}
+        </div>
+    {% endif %}
+    {% if limit_service.egaPokal <= 0 %}
+    <div class="alert alert-danger mb-0" role="alert">
+        {{ 'base.alert.limit.exceeded.ega'|trans }}
+    </div>
+    {% elseif limit_service.egaPokal < 100 %}
+        <div class="alert alert-warning mb-0" role="alert">
+            {{ 'base.alert.limit.close.ega'|trans }}
+        </div>
+    {% endif %}
+    {% if date('now', 'Europe/Paris') > date(endDate, 'Europe/Paris') %}
+        <div class="alert alert-danger mb-0" role="alert">
+            {{ 'base.alert.end-date'|trans }}
+        </div>
+    {% elseif date('now', 'Europe/Paris') > date(deadline, 'Europe/Paris') %}
+        <div class="alert alert-warning mb-0" role="alert">
+            {{ 'base.alert.deadline'|trans }}
+        </div>
+    {% endif %}
     {% block body %}{% endblock %}
 </main>
 

@@ -49,7 +49,7 @@ class InvoiceController extends AbstractController
 
         // Auswahl des Font
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        // Auswahl der MArgins
+        // Auswahl der Margins
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         // Automatisches Autobreak der Seiten
         $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);

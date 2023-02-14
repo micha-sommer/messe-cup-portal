@@ -16,6 +16,16 @@ admin:
   messe:
     title: 'Overview contestants Messe-Cup'
 base:
+  alert:
+    deadline: 'The deadline for registrations has passed. Please note that additional participants will be charged with an increased registration fee.'
+    end-date: 'Registration period ended. For further changes please inform us on site.'
+    limit:
+      close:
+        messe: 'Messe-Cup: only a few places left.'
+        ega: 'ega-Pokal: only a few places left.'
+      exceeded:
+        messe: 'Messe-Cup: no more places available. You may want to contact us for further requests.'
+        ega: 'ega-Pokal: no more places available. You may want to contact us for further requests.'
   language:
     title: language
     de: german
@@ -50,6 +60,10 @@ contestant:
     ega: ega-Pokal
     messe: Messe-Cup
   description: 'Please enter as much information as you have available for the time being.'
+  action:
+    move:
+      title: 'Move participant'
+      to: 'Move to:'
   data:
     title:
       male: Participant
@@ -72,7 +86,8 @@ contestant:
       for: 'comment for'
   status:
     created: 'not yet saved'
-    saved: 'saved and registered'
+    saved: 'registered'
+    late: 'registered, but increased fee'
 global:
   forms:
     button:

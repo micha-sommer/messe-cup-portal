@@ -21,7 +21,8 @@
         <td colspan="4"></td>
     </tr>
     <tr>
-        <td style="width: 60%" colspan="2">{{ registration.club }}<br>{{ registration.firstName }} {{ registration.lastName }}</td>
+        <td style="width: 60%" colspan="2">{{ registration.club }}
+            <br>{{ registration.firstName }} {{ registration.lastName }}</td>
         <td style="width: 40%" colspan="2">
             Erfurter Judo-Club e.V.<br>
             In der Lutsche 10<br>
@@ -33,7 +34,7 @@
         <td colspan="4"></td>
     </tr>
     <tr>
-        <td align="right" colspan="4">Erfurt, {{ "now"|date("d.m.Y"|trans) }}</td>
+        <td align="right" colspan="4">Erfurt, {{ "now"|date('d.m.Y', 'Europe/Berlin') }}</td>
     </tr>
     <tr>
         <td colspan="4"></td>
@@ -59,18 +60,40 @@
         <td style="border-bottom: 1px solid black; width: 28%" align="right"><b>Gesamtpreis</b></td>
     </tr>
     <tr>
-        {% set messeContestantsCount = registration.messeFemaleContestants.count + registration.messeMaleContestants.count %}
+        {% set messeRegularCount =
+            registration.messeFemaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length
+            + registration.messeMaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length %}
         <td style="width: 45%">Startgeld Messe-Cup</td>
         <td style="width: 15%" align="right">15,00 €</td>
-        <td style="width: 12%" align="right">{{ messeContestantsCount }}</td>
-        <td style="width: 28%" align="right">{{ (15*messeContestantsCount)|number_format(2,',','.') }} €</td>
+        <td style="width: 12%" align="right">{{ messeRegularCount }}</td>
+        <td style="width: 28%" align="right">{{ (15*messeRegularCount)|number_format(2,',','.') }} €</td>
     </tr>
     <tr>
-        {% set egaContestantsCount = registration.egaFemaleContestants.count + registration.egaMaleContestants.count %}
+        {% set egaRegularCount =
+            registration.egaFemaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length
+            + registration.egaMaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length %}
         <td style="width: 45%">Startgeld ega-Pokal</td>
         <td style="width: 15%" align="right">13,00 €</td>
-        <td style="width: 12%" align="right">{{ egaContestantsCount }}</td>
-        <td style="width: 28%" align="right">{{ (13*egaContestantsCount)|number_format(2,',','.') }} €</td>
+        <td style="width: 12%" align="right">{{ egaRegularCount }}</td>
+        <td style="width: 28%" align="right">{{ (13*egaRegularCount)|number_format(2,',','.') }} €</td>
+    </tr>
+    <tr>
+        {% set messeLateCount =
+            registration.messeFemaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length
+            + registration.messeMaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length %}
+        <td style="width: 45%">erhöhtes Startgeld Messe-Cup</td>
+        <td style="width: 15%" align="right">30,00 €</td>
+        <td style="width: 12%" align="right">{{ messeLateCount }}</td>
+        <td style="width: 28%" align="right">{{ (30*messeLateCount)|number_format(2,',','.') }} €</td>
+    </tr>
+    <tr>
+        {% set egaLateCount =
+            registration.egaFemaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length
+            + registration.egaMaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length %}
+        <td style="width: 45%">erhöhtes Startgeld ega-Pokal</td>
+        <td style="width: 15%" align="right">26,00 €</td>
+        <td style="width: 12%" align="right">{{ egaLateCount }}</td>
+        <td style="width: 28%" align="right">{{ (26*egaLateCount)|number_format(2,',','.') }} €</td>
     </tr>
     <tr>
         <td style="border-bottom: 1px solid black;" colspan="4"></td>
@@ -83,7 +106,7 @@
         <td style="width: 15%"></td>
         <td style="border: 1px solid black; width: 12%"><b>Gesamt:</b></td>
         <td style="border: 1px solid black; width: 28%; text-align: right">
-            <b>{{ (15*messeContestantsCount+13*egaContestantsCount)|number_format(2,',','.') }} €</b></td>
+            <b>{{ (15*messeRegularCount+13*egaRegularCount+30*messeLateCount+26*egaLateCount)|number_format(2,',','.') }} €</b></td>
     </tr>
     <tr>
         <td style="height: 50px" colspan="4"></td>

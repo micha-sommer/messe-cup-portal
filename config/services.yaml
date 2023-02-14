@@ -7,6 +7,8 @@ parameters:
     app.supported_locales: 'de|en'
     app.is_active: true
     app.year: 2023
+    app.limit.messe: 600
+    app.limit.ega: 450
 
 services:
     # default configuration for services in *this* file
@@ -25,3 +27,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Service\LimitService:
+      arguments:
+        $messeLimit: '%app.limit.messe%'
+        $egaLimit: '%app.limit.ega%'

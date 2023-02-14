@@ -41,6 +41,7 @@ security:
         - { path: ^/(%app.supported_locales%)/contestants/ega/male/edit/?$, roles: ROLE_USER }
         - { path: ^/(%app.supported_locales%)/contestants/messe/female/edit/?$, roles: ROLE_USER }
         - { path: ^/(%app.supported_locales%)/contestants/messe/male/edit/?$, roles: ROLE_USER }
+        - { path: ^/(%app.supported_locales%)/contestants/\d+/move/from/messe|ega/male|female/to/messe|ega/male|female/?$, roles: ROLE_USER }
         - { path: ^/(%app.supported_locales%)/registration/\d+/?$, methods: POST, roles: ROLE_USER }
         - { path: ^/(%app.supported_locales%)/registration/new/?$, roles: PUBLIC_ACCESS }
         - { path: ^/(%app.supported_locales%)/registration/edit/?$, roles: ROLE_USER }

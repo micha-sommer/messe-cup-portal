@@ -9,7 +9,9 @@ twig:
         year: 2023
         messe_count: 23
         ega_count: 28
-        endDate: 'March 15, 2023 23:59'
+        deadline: 'May 01, 2023 00:01'
+        endDate: 'May 11, 2023 23:59'
+        limit_service: '@App\Service\LimitService'
 
     form_themes: ['bootstrap_5_layout.html.twig']
 

@@ -160,7 +160,9 @@ class MesseFemaleContestant
     #[ORM\PrePersist]
     public function onPrePersist(): void
     {
-        $this->createdAt = new DateTimeImmutable();
+        if ($this->createdAt == null) {
+            $this->createdAt = new DateTimeImmutable();
+        }
         $this->modifiedAt = new DateTimeImmutable();
     }
 

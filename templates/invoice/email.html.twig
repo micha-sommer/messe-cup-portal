@@ -24,7 +24,9 @@
         background: #f3f3f3 !important;
     }
 
-    .text-right { text-align: right; }
+    .text-right {
+        text-align: right;
+    }
 </style>
 <!-- move the above styles into your custom stylesheet -->
 
@@ -84,22 +86,46 @@
                     <th class="text-right">{{ 'invoice.data.position.total'|trans({}, 'messages', requestLocale) }}</th>
                 </tr>
                 <tr>
-                    {% set messeContestantsCount = registration.messeFemaleContestants.count + registration.messeMaleContestants.count %}
+                    {% set messeRegularCount =
+                        registration.messeFemaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length
+                        + registration.messeMaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length %}
                     <td>Startgeld Messe-Cup</td>
                     <td class="text-right">15,00 €</td>
-                    <td class="text-right">{{ messeContestantsCount }}</td>
-                    <td class="text-right">{{ (15*messeContestantsCount)|number_format(2,',','.') }} €</td>
+                    <td class="text-right">{{ messeRegularCount }}</td>
+                    <td class="text-right">{{ (15*messeRegularCount)|number_format(2,',','.') }} €</td>
                 </tr>
                 <tr>
-                    {% set egaContestantsCount = registration.egaFemaleContestants.count + registration.egaMaleContestants.count %}
+                    {% set egaRegularCount =
+                        registration.egaFemaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length
+                        + registration.egaMaleContestants|filter(it => it.createdAt <= date(deadline, 'Europe/Berlin'))|length %}
                     <td>Startgeld ega-Pokal</td>
                     <td class="text-right">13,00 €</td>
-                    <td class="text-right">{{ egaContestantsCount }}</td>
-                    <td class="text-right">{{ (13*egaContestantsCount)|number_format(2,',','.') }} €</td>
+                    <td class="text-right">{{ egaRegularCount }}</td>
+                    <td class="text-right">{{ (13*egaRegularCount)|number_format(2,',','.') }} €</td>
+                </tr>
+                <tr>
+                    {% set messeLateCount =
+                        registration.messeFemaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length
+                        + registration.messeMaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length %}
+                    <td>erhöhtes Startgeld Messe-Cup</td>
+                    <td class="text-right">30,00 €</td>
+                    <td class="text-right">{{ messeLateCount }}</td>
+                    <td class="text-right">{{ (30*messeLateCount)|number_format(2,',','.') }} €</td>
+                </tr>
+                <tr>
+                    {% set egaLateCount =
+                        registration.egaFemaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length
+                        + registration.egaMaleContestants|filter(it => it.createdAt > date(deadline, 'Europe/Berlin'))|length %}
+                    <td>erhöhtes Startgeld ega-Pokal</td>
+                    <td class="text-right">26,00 €</td>
+                    <td class="text-right">{{ egaLateCount }}</td>
+                    <td class="text-right">{{ (26*egaLateCount)|number_format(2,',','.') }} €</td>
                 </tr>
                 <tr>
                     <th class="text-right" colspan="3">{{ 'invoice.data.total'|trans }}</th>
-                    <th class="text-right">{{ (15*messeContestantsCount+13*egaContestantsCount)|number_format(2,',','.') }} €</th>
+                    <th class="text-right">{{ (15*messeRegularCount+13*egaRegularCount+30*messeLateCount+26*egaLateCount)|number_format(2,',','.') }}
+                        €
+                    </th>
                 </tr>
             </table>
         </columns>
