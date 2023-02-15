@@ -9,7 +9,7 @@ twig:
         year: 2023
         messe_count: 23
         ega_count: 28
-        deadline: 'May 01, 2023 00:01'
+        deadline: 'Apr 30, 2023 23:59'
         endDate: 'May 11, 2023 23:59'
         limit_service: '@App\Service\LimitService'
 
