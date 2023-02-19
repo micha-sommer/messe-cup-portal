@@ -152,6 +152,8 @@ welcome:
     send-invoice: 'Rechnung senden'
     registration: Kontaktdaten
     contestant:
+      description:
+        index: 'Du hast folgende Sportler und Sportlerinnen registriert:'
+        anonymous: '<strong>{total}</strong> registrierte Wettkämpfer_innen von <strong>{clubs}</strong> Vereinen/Nationen in den folgenden Klassen:'
       ega: ega-Pokal
       messe: Messe-Cup
-      description: '<strong>{total}</strong> registrierte Wettkämpfer_innen von <strong>{clubs}</strong> Vereinen/Nationen in den folgenden Klassen:'
