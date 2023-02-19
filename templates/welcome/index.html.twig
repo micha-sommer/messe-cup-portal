@@ -20,8 +20,11 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }}
-                            - {{ 'contestant.data.gender.female'|trans }}</h5>
+                        <h5 class="card-title m-0">
+                            <a href="{{ path('contestants_edit_messe_female') }}">
+                            {{ 'welcome.overview.contestant.messe'|trans }}- {{ 'contestant.data.gender.female'|trans }}
+                            </a>
+                        </h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         {% for contestant in registration.messeFemaleContestants %}
@@ -36,8 +39,11 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }}
-                            - {{ 'contestant.data.gender.male'|trans }}</h5>
+                        <h5 class="card-title m-0">
+                            <a href="{{ path('contestants_edit_messe_male') }}">
+                            {{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.male'|trans }}
+                            </a>
+                        </h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         {% for contestant in registration.messeMaleContestants %}
@@ -52,8 +58,11 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }}
-                            - {{ 'contestant.data.gender.female'|trans }}</h5>
+                        <h5 class="card-title m-0">
+                            <a href="{{ path('contestants_edit_ega_female') }}">
+                            {{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.female'|trans }}
+                            </a>
+                        </h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         {% for contestant in registration.egaFemaleContestants %}
@@ -68,8 +77,11 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }}
-                            - {{ 'contestant.data.gender.male'|trans }}</h5>
+                        <h5 class="card-title m-0">
+                            <a href="{{ path('contestants_edit_ega_male') }}">
+                            {{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.male'|trans }}
+                            </a>
+                        </h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         {% for contestant in registration.egaMaleContestants %}
