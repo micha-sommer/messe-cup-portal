@@ -12,6 +12,12 @@
     <script src="https://kit.fontawesome.com/f0d5ec1ada.js"></script>
     <script src="{{ asset('js/jquery-3.6.1.slim.min.js') }}" type="text/javascript"></script>
 </head>
+<style>
+    body {
+        /* Margin bottom by footer height */
+        margin-bottom: 60px;
+    }
+</style>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-0" aria-label="site navigation">
     <div class="container-fluid">
@@ -130,7 +136,7 @@
         </div>
     </div>
 </nav>
-<main role="main" class="container">
+<main role="main" class="container p-0 p-md-3">
     {% if limit_service.messeCup <= 0 %}
         <div class="alert alert-danger mb-0" role="alert">
             {{ 'base.alert.limit.exceeded.messe'|trans }}
@@ -161,13 +167,13 @@
     {% block body %}{% endblock %}
 </main>
 
-<nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light" aria-label="language menu">
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light" aria-label="footer">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarFooter"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarFooter">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ 'base.footer.homepage.link'|trans }}">

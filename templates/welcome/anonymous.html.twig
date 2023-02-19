@@ -3,141 +3,143 @@
 {% block title %}{{ 'welcome.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
-            <p class="lead">{{ 'welcome.active'|trans({'year':year}) }}</p>
-            {% if date(endDate, 'Europe/Paris') < date('now', 'Europe/Paris') %}
-                <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
-            {% endif %}
-            <hr class="my-4">
-            <figure class="figure">
-                {% for country in countries %}
-                    <img src="{{ asset('images/Flag_of_%s.svg'|format(country)) }}"
-                         class="rounded float-left mb-2 ml-2" height="50" alt="{{ country }}">
-                {% endfor %}
-            </figure>
-            <hr class="my-4">
-            <p>{{ 'welcome.overview.contestant.description.anonymous'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>{{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.female'|trans }}</div>
-                                <span class="badge rounded-pill text-bg-danger">
+    <div class="p-2 p-md-3 bg-light rounded-3">
+        <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
+        <p class="lead">{{ 'welcome.active'|trans({'year':year}) }}</p>
+        {% if date(endDate, 'Europe/Paris') < date('now', 'Europe/Paris') %}
+            <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
+        {% endif %}
+        <hr class="my-4">
+        <figure class="figure">
+            {% for country in countries %}
+                <img src="{{ asset('images/Flag_of_%s.svg'|format(country)) }}"
+                     class="rounded float-left mb-2 ml-2" height="50" alt="{{ country }}">
+            {% endfor %}
+        </figure>
+        <hr class="my-4">
+        <p>{{ 'welcome.overview.contestant.description.anonymous'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>{{ 'welcome.overview.contestant.messe'|trans }}
+                                - {{ 'contestant.data.gender.female'|trans }}</div>
+                            <span class="badge rounded-pill text-bg-danger">
                                 {{ categories['messe']['female']['total'] }}
                             </span>
-                            </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            {% for category, amount in categories['messe']['female'] %}
-                                {% if category != 'total' %}
-                                    <li class="list-group-item">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>{{ category }}</div>
-                                            <span class="badge rounded-pill text-bg-warning">
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for category, amount in categories['messe']['female'] %}
+                            {% if category != 'total' %}
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>{{ category }}</div>
+                                        <span class="badge rounded-pill text-bg-warning">
                                             {{ amount }}
                                         </span>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>{{ 'welcome.overview.contestant.messe'|trans }} - {{ 'contestant.data.gender.male'|trans }}</div>
-                                <span class="badge rounded-pill text-bg-primary">
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>{{ 'welcome.overview.contestant.messe'|trans }}
+                                - {{ 'contestant.data.gender.male'|trans }}</div>
+                            <span class="badge rounded-pill text-bg-primary">
                                 {{ categories['messe']['male']['total'] }}
                             </span>
-                            </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            {% for category, amount in categories['messe']['male'] %}
-                                {% if category != 'total' %}
-                                    <li class="list-group-item">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>{{ category }}</div>
-                                            <span class="badge rounded-pill text-bg-info">
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for category, amount in categories['messe']['male'] %}
+                            {% if category != 'total' %}
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>{{ category }}</div>
+                                        <span class="badge rounded-pill text-bg-info">
                                             {{ amount }}
                                         </span>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                            <div>{{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.female'|trans }}</div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>{{ 'welcome.overview.contestant.ega'|trans }}
+                                - {{ 'contestant.data.gender.female'|trans }}</div>
                             <span class="badge rounded-pill text-bg-danger">
                                 {{ categories['ega']['female']['total'] }}
                             </span>
-                            </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            {% for category, amount in categories['ega']['female'] %}
-                                {% if category != 'total' %}
-                                    <li class="list-group-item">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>{{ category }}</div>
-                                            <span class="badge rounded-pill text-bg-warning">
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for category, amount in categories['ega']['female'] %}
+                            {% if category != 'total' %}
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>{{ category }}</div>
+                                        <span class="badge rounded-pill text-bg-warning">
                                             {{ amount }}
                                         </span>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>{{ 'welcome.overview.contestant.ega'|trans }} - {{ 'contestant.data.gender.male'|trans }}</div>
-                                <span class="badge rounded-pill text-bg-primary">
-                                {{ categories['ega']['male']['total'] }}
-                            </span>
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for category, amount in categories['ega']['male'] %}
-                                {% if category != 'total' %}
-                                    <li class="list-group-item">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>{{ category }}</div>
-                                            <span class="badge rounded-pill text-bg-info">
-                                            {{ amount }}
-                                        </span>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
-            <hr class="my-4">
-            <p>{{ 'welcome.contact-us.title'|trans }}</p>
-            <p>
-                {{ 'welcome.contact-us.name'|trans }}<br/>
-                {{ 'welcome.contact-us.street'|trans }}<br/>
-                {{ 'welcome.contact-us.zipcode'|trans }} {{ 'welcome.contact-us.city'|trans }}<br/>
-                <a class="fa fa-phone" href="tel:{{ 'welcome.contact-us.phone.data'|trans }}">
-                    {{ 'welcome.contact-us.phone.display'|trans }}
-                </a><br/>
-                <a class="fa fa-envelope" href="mailto:{{ 'welcome.contact-us.email'|trans }}">
-                    {{ 'welcome.contact-us.email'|trans }}
-                </a><br/>
-            </p>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>{{ 'welcome.overview.contestant.ega'|trans }}
+                                - {{ 'contestant.data.gender.male'|trans }}</div>
+                            <span class="badge rounded-pill text-bg-primary">
+                                {{ categories['ega']['male']['total'] }}
+                            </span>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for category, amount in categories['ega']['male'] %}
+                            {% if category != 'total' %}
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>{{ category }}</div>
+                                        <span class="badge rounded-pill text-bg-info">
+                                            {{ amount }}
+                                        </span>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
+        <hr class="my-4">
+        <p>{{ 'welcome.contact-us.title'|trans }}</p>
+        <p>
+            {{ 'welcome.contact-us.name'|trans }}<br/>
+            {{ 'welcome.contact-us.street'|trans }}<br/>
+            {{ 'welcome.contact-us.zipcode'|trans }} {{ 'welcome.contact-us.city'|trans }}<br/>
+            <a class="fa fa-phone" href="tel:{{ 'welcome.contact-us.phone.data'|trans }}">
+                {{ 'welcome.contact-us.phone.display'|trans }}
+            </a><br/>
+            <a class="fa fa-envelope" href="mailto:{{ 'welcome.contact-us.email'|trans }}">
+                {{ 'welcome.contact-us.email'|trans }}
+            </a><br/>
+        </p>
     </div>
 {% endblock %}

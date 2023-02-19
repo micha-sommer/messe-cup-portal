@@ -34,87 +34,85 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-4">{{ title|trans }}</h1>
-            <hr class="my-4">
-            <table
-                id="contestants-table"
-                data-toggle="table"
-                data-locale="{{ app.request.locale }}"
-                data-icons-prefix="fa"
-                data-icons="myIcons"
-                data-search="true"
-                data-search-align="left"
-                data-search-accent-neutralise="true"
-                data-show-columns="true"
-                data-buttons-align="left"
-                data-buttons-class="primary"
-                data-filter-control="true"
-                data-show-export="true"
-                data-export-types="['csv', 'xlsx']"
-            >
-                <caption>{{ title|trans }}</caption>
-                <thead>
+    <div class="p-2 p-md-3 bg-light rounded-3">
+        <h1 class="display-4">{{ title|trans }}</h1>
+        <hr class="my-4">
+        <table
+            id="contestants-table"
+            data-toggle="table"
+            data-locale="{{ app.request.locale }}"
+            data-icons-prefix="fa"
+            data-icons="myIcons"
+            data-search="true"
+            data-search-align="left"
+            data-search-accent-neutralise="true"
+            data-show-columns="true"
+            data-buttons-align="left"
+            data-buttons-class="primary"
+            data-filter-control="true"
+            data-show-export="true"
+            data-export-types="['csv', 'xlsx']"
+        >
+            <caption>{{ title|trans }}</caption>
+            <thead>
+            <tr>
+                <th data-field="last-name" data-sortable="true" data-filter-control="input">
+                    {{ 'contestant.data.last-name'|trans }}
+                </th>
+                <th data-field="first-name" data-sortable="true" data-filter-control="input">
+                    {{ 'contestant.data.first-name'|trans }}
+                </th>
+                <th data-field="club" data-sortable="true" data-filter-control="select">
+                    {{ 'admin.data.club'|trans }}
+                </th>
+                <th data-field="country" data-sortable="true" data-filter-control="select">
+                    {{ 'admin.data.country'|trans }}
+                </th>
+                <th data-field="gender" data-sortable="true" data-filter-control="select">
+                    {{ 'contestant.data.gender.title'|trans }}
+                </th>
+                <th data-field="year" data-sortable="true" data-filter-control="select">
+                    {{ 'contestant.data.year'|trans }}
+                </th>
+                <th data-field="age-category" data-sortable="true" data-filter-control="select">
+                    {{ 'contestant.data.age-category.title'|trans }}
+                </th>
+                <th data-field="weight-category" data-sortable="true" data-filter-control="select">
+                    {{ 'contestant.data.weight-category'|trans }}
+                </th>
+                <th data-field="comment" data-sortable="true">
+                    {{ 'contestant.data.comment.for'|trans }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for femaleContestant in femaleContestants %}
                 <tr>
-                    <th data-field="last-name" data-sortable="true" data-filter-control="input">
-                        {{ 'contestant.data.last-name'|trans }}
-                    </th>
-                    <th data-field="first-name" data-sortable="true" data-filter-control="input">
-                        {{ 'contestant.data.first-name'|trans }}
-                    </th>
-                    <th data-field="club" data-sortable="true" data-filter-control="select">
-                        {{ 'admin.data.club'|trans }}
-                    </th>
-                    <th data-field="country" data-sortable="true" data-filter-control="select">
-                        {{ 'admin.data.country'|trans }}
-                    </th>
-                    <th data-field="gender" data-sortable="true" data-filter-control="select">
-                        {{ 'contestant.data.gender.title'|trans }}
-                    </th>
-                    <th data-field="year" data-sortable="true" data-filter-control="select">
-                        {{ 'contestant.data.year'|trans }}
-                    </th>
-                    <th data-field="age-category" data-sortable="true" data-filter-control="select">
-                        {{ 'contestant.data.age-category.title'|trans }}
-                    </th>
-                    <th data-field="weight-category" data-sortable="true" data-filter-control="select">
-                        {{ 'contestant.data.weight-category'|trans }}
-                    </th>
-                    <th data-field="comment" data-sortable="true">
-                        {{ 'contestant.data.comment.for'|trans }}
-                    </th>
+                    <td>{{ femaleContestant.firstName }}</td>
+                    <td>{{ femaleContestant.lastName }}</td>
+                    <td>{{ femaleContestant.registration.club }}</td>
+                    <td>{{ femaleContestant.registration.country }}</td>
+                    <td>{{ "contestant.data.gender.female"|trans }}</td>
+                    <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
+                    <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
+                    <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
+                    <td>{{ femaleContestant.comment }}</td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for femaleContestant in femaleContestants %}
-                    <tr>
-                        <td>{{ femaleContestant.firstName }}</td>
-                        <td>{{ femaleContestant.lastName }}</td>
-                        <td>{{ femaleContestant.registration.club }}</td>
-                        <td>{{ femaleContestant.registration.country }}</td>
-                        <td>{{ "contestant.data.gender.female"|trans }}</td>
-                        <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
-                        <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
-                        <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
-                        <td>{{ femaleContestant.comment }}</td>
-                    </tr>
-                {% endfor %}
-                {% for femaleContestant in maleContestants %}
-                    <tr>
-                        <td>{{ femaleContestant.firstName }}</td>
-                        <td>{{ femaleContestant.lastName }}</td>
-                        <td>{{ femaleContestant.registration.club }}</td>
-                        <td>{{ femaleContestant.registration.country }}</td>
-                        <td>{{ "contestant.data.gender.male"|trans }}</td>
-                        <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
-                        <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
-                        <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
-                        <td>{{ femaleContestant.comment }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            {% endfor %}
+            {% for femaleContestant in maleContestants %}
+                <tr>
+                    <td>{{ femaleContestant.firstName }}</td>
+                    <td>{{ femaleContestant.lastName }}</td>
+                    <td>{{ femaleContestant.registration.club }}</td>
+                    <td>{{ femaleContestant.registration.country }}</td>
+                    <td>{{ "contestant.data.gender.male"|trans }}</td>
+                    <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
+                    <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
+                    <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
+                    <td>{{ femaleContestant.comment }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

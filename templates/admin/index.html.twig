@@ -3,78 +3,77 @@
 {% block title %}{{ 'admin.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-4">{{ 'admin.title'|trans }}</h1>
-            <hr class="my-4">
-            <table class="table">
-                <caption>Admin table</caption>
-                <thead class="table-dark">
+    <div class="p-2 p-md-3 bg-light rounded-3">
+        <h1 class="display-4">{{ 'admin.title'|trans }}</h1>
+        <hr class="my-4">
+        <table class="table">
+            <caption>Admin table</caption>
+            <thead class="table-dark">
+            <tr>
+                <td colspan="3" class="table-light"></td>
+                <td colspan="3" class="text-center">{{ 'admin.data.messe'|trans }}</td>
+                <td colspan="3" class="text-center">{{ 'admin.data.ega'|trans }}</td>
+                <td colspan="1" class="table-light"></td>
+            </tr>
+            <tr>
+                <th scope="col">{{ 'admin.data.id'|trans }}</th>
+                <th scope="col">{{ 'admin.data.country'|trans }}</th>
+                <th scope="col">{{ 'admin.data.club'|trans }}</th>
+                <th scope="col">&sum;</th>
+                <th scope="col" class="p-0 fs-4">&female;</th>
+                <th scope="col" class="p-0 fs-4">&male;</th>
+                <th scope="col">&sum;</th>
+                <th scope="col" class="p-0 fs-4">&female;</th>
+                <th scope="col" class="p-0 fs-4">&male;</th>
+                <th scope="col">{{ 'admin.action.title'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>&sum;</td>
+                <td></td>
+                <td>{{ registrationsCount }}</td>
+                <td class="table-active">{{ messeCount }}</td>
+                <td class="table-active">{{ messeFemaleCount }}</td>
+                <td class="table-active">{{ messeMaleCount }}</td>
+                <td class="table-active">{{ egaCount }}</td>
+                <td class="table-active">{{ egaFemaleCount }}</td>
+                <td class="table-active">{{ egaMaleCount }}</td>
+                <td></td>
+            </tr>
+            {% for registration in registrations %}
                 <tr>
-                    <td colspan="3" class="table-light"></td>
-                    <td colspan="3" class="text-center">{{ 'admin.data.messe'|trans }}</td>
-                    <td colspan="3" class="text-center">{{ 'admin.data.ega'|trans }}</td>
-                    <td colspan="1" class="table-light"></td>
+                    <td>{{ registration.id }}</td>
+                    <td>{{ registration.country }}</td>
+                    <td>{{ registration.club }}</td>
+                    <td class="table-active">{{ registration.messeFemaleContestants.count + registration.messeMaleContestants.count }}</td>
+                    <td class="table-active">{{ registration.messeFemaleContestants.count }}</td>
+                    <td class="table-active">{{ registration.messeMaleContestants.count }}</td>
+                    <td class="table-active">{{ registration.egaFemaleContestants.count + registration.egaMaleContestants.count }}</td>
+                    <td class="table-active">{{ registration.egaFemaleContestants.count }}</td>
+                    <td class="table-active">{{ registration.egaMaleContestants.count }}</td>
+                    <td>
+                        <form style="display: inline" method="post"
+                              action="{{ path('registration_delete', {'id': registration.id}) }}"
+                              onsubmit="return confirm('{{ 'registration.edit.confirm-delete'|trans({'club': registration.club}) }}');">
+                            <button class="btn btn-danger"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                        </form>
+                        <a class="btn btn-primary" role="button"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Als dieser Nutzer einloggen"
+                           href="{{ path('welcome', {'_switch_user': registration.email }) }}">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a class="btn btn-info" role="button"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Rechnungsdokument anschauen"
+                           href="{{ path('invoice_show', {'id': registration.id}) }}">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </a>
+                    </td>
                 </tr>
-                <tr>
-                    <th scope="col">{{ 'admin.data.id'|trans }}</th>
-                    <th scope="col">{{ 'admin.data.country'|trans }}</th>
-                    <th scope="col">{{ 'admin.data.club'|trans }}</th>
-                    <th scope="col">&sum;</th>
-                    <th scope="col" class="p-0 fs-4">&female;</th>
-                    <th scope="col" class="p-0 fs-4">&male;</th>
-                    <th scope="col">&sum;</th>
-                    <th scope="col" class="p-0 fs-4">&female;</th>
-                    <th scope="col" class="p-0 fs-4">&male;</th>
-                    <th scope="col">{{ 'admin.action.title'|trans }}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>&sum;</td>
-                    <td></td>
-                    <td>{{ registrationsCount }}</td>
-                    <td class="table-active">{{ messeCount }}</td>
-                    <td class="table-active">{{ messeFemaleCount }}</td>
-                    <td class="table-active">{{ messeMaleCount }}</td>
-                    <td class="table-active">{{ egaCount }}</td>
-                    <td class="table-active">{{ egaFemaleCount }}</td>
-                    <td class="table-active">{{ egaMaleCount }}</td>
-                    <td></td>
-                </tr>
-                {% for registration in registrations %}
-                    <tr>
-                        <td>{{ registration.id }}</td>
-                        <td>{{ registration.country }}</td>
-                        <td>{{ registration.club }}</td>
-                        <td class="table-active">{{ registration.messeFemaleContestants.count + registration.messeMaleContestants.count }}</td>
-                        <td class="table-active">{{ registration.messeFemaleContestants.count }}</td>
-                        <td class="table-active">{{ registration.messeMaleContestants.count }}</td>
-                        <td class="table-active">{{ registration.egaFemaleContestants.count + registration.egaMaleContestants.count }}</td>
-                        <td class="table-active">{{ registration.egaFemaleContestants.count }}</td>
-                        <td class="table-active">{{ registration.egaMaleContestants.count }}</td>
-                        <td>
-                            <form style="display: inline" method="post" action="{{ path('registration_delete', {'id': registration.id}) }}"
-                                  onsubmit="return confirm('{{ 'registration.edit.confirm-delete'|trans({'club': registration.club}) }}');">
-                                <button class="btn btn-danger"><i class="fas fa-trash" aria-hidden="true"></i></button>
-                            </form>
-                            <a class="btn btn-primary" role="button"
-                               data-toggle="tooltip" data-placement="top"
-                               title="Als dieser Nutzer einloggen"
-                               href="{{ path('welcome', {'_switch_user': registration.email }) }}">
-                                <i class="fas fa-sign-in-alt"></i>
-                            </a>
-                            <a class="btn btn-info" role="button"
-                               data-toggle="tooltip" data-placement="top"
-                               title="Rechnungsdokument anschauen"
-                               href="{{ path('invoice_show', {'id': registration.id}) }}">
-                                <i class="fas fa-file-invoice-dollar"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

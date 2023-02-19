@@ -3,99 +3,97 @@
 {% block title %}{{ 'welcome.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
-            <p class="lead">{{ 'welcome.active'|trans({'year':year}) }}</p>
-            {% if date(endDate, 'Europe/Paris') < date('now', 'Europe/Paris') %}
-                <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
-            {% endif %}
-            <hr class="my-4">
-            <a class="btn btn-primary"
-               href="{{ path('invoice_send_mail', {'id': registration.id}) }}">
-                {{ 'welcome.overview.send-invoice'|trans }}
-            </a>
-            <hr class="my-4">
-            {{ 'welcome.overview.contestant.index'|trans }}
-            <div class="row row-cols-1 row-cols-md-2">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }}
-                                - {{ 'contestant.data.gender.female'|trans }}</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for contestant in registration.messeFemaleContestants %}
-                                <li class="list-group-item d-flex justify-content-between">
-                                    {{ contestant.firstName }} {{ contestant.lastName }}
-                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
-                                </li>
-                            {% endfor %}
-                        </ul>
+    <div class="p-2 p-md-3 bg-light rounded-3">
+        <h1 class="display-4">{{ 'welcome.greeting'|trans }}</h1>
+        <p class="lead">{{ 'welcome.active'|trans({'year':year}) }}</p>
+        {% if date(endDate, 'Europe/Paris') < date('now', 'Europe/Paris') %}
+            <div class="alert alert-danger" role="alert">{{ 'welcome.end-date-passed'|trans }}</div>
+        {% endif %}
+        <hr class="my-4">
+        <a class="btn btn-primary"
+           href="{{ path('invoice_send_mail', {'id': registration.id}) }}">
+            {{ 'welcome.overview.send-invoice'|trans }}
+        </a>
+        <hr class="my-4">
+        {{ 'welcome.overview.contestant.description.index'|trans }}
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }}
+                            - {{ 'contestant.data.gender.female'|trans }}</h5>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }}
-                                - {{ 'contestant.data.gender.male'|trans }}</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for contestant in registration.messeMaleContestants %}
-                                <li class="list-group-item d-flex justify-content-between">
-                                    {{ contestant.firstName }} {{ contestant.lastName }}
-                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }}
-                                - {{ 'contestant.data.gender.female'|trans }}</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for contestant in registration.egaFemaleContestants %}
-                                <li class="list-group-item d-flex justify-content-between">
-                                    {{ contestant.firstName }} {{ contestant.lastName }}
-                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }}
-                                - {{ 'contestant.data.gender.male'|trans }}</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for contestant in registration.egaMaleContestants %}
-                                <li class="list-group-item d-flex justify-content-between">
-                                    {{ contestant.firstName }} {{ contestant.lastName }}
-                                    <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for contestant in registration.messeFemaleContestants %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                {{ contestant.firstName }} {{ contestant.lastName }}
+                                <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
-            <hr class="my-4">
-            <p>{{ 'welcome.contact-us.title'|trans }}</p>
-            <p>
-                {{ 'welcome.contact-us.name'|trans }}<br/>
-                {{ 'welcome.contact-us.street'|trans }}<br/>
-                {{ 'welcome.contact-us.zipcode'|trans }} {{ 'welcome.contact-us.city'|trans }}<br/>
-                <a class="fa fa-phone" href="tel:{{ 'welcome.contact-us.phone.data'|trans }}">
-                    {{ 'welcome.contact-us.phone.display'|trans }}
-                </a><br/>
-                <a class="fa fa-envelope" href="mailto:{{ 'welcome.contact-us.email'|trans }}">
-                    {{ 'welcome.contact-us.email'|trans }}
-                </a><br/>
-            </p>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'welcome.overview.contestant.messe'|trans }}
+                            - {{ 'contestant.data.gender.male'|trans }}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for contestant in registration.messeMaleContestants %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                {{ contestant.firstName }} {{ contestant.lastName }}
+                                <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }}
+                            - {{ 'contestant.data.gender.female'|trans }}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for contestant in registration.egaFemaleContestants %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                {{ contestant.firstName }} {{ contestant.lastName }}
+                                <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'welcome.overview.contestant.ega'|trans }}
+                            - {{ 'contestant.data.gender.male'|trans }}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for contestant in registration.egaMaleContestants %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                {{ contestant.firstName }} {{ contestant.lastName }}
+                                <span class="badge bg-primary">{{ contestant.weightCategory }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
+        <hr class="my-4">
+        <p>{{ 'welcome.contact-us.title'|trans }}</p>
+        <p>
+            {{ 'welcome.contact-us.name'|trans }}<br/>
+            {{ 'welcome.contact-us.street'|trans }}<br/>
+            {{ 'welcome.contact-us.zipcode'|trans }} {{ 'welcome.contact-us.city'|trans }}<br/>
+            <a class="fa fa-phone" href="tel:{{ 'welcome.contact-us.phone.data'|trans }}">
+                {{ 'welcome.contact-us.phone.display'|trans }}
+            </a><br/>
+            <a class="fa fa-envelope" href="mailto:{{ 'welcome.contact-us.email'|trans }}">
+                {{ 'welcome.contact-us.email'|trans }}
+            </a><br/>
+        </p>
     </div>
 {% endblock %}

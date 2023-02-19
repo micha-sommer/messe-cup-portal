@@ -3,14 +3,14 @@
 {% block title %}{{ "contestant.title.#{ cup }"|trans }} - {{ "contestant.data.gender.#{ gender }"|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        {%  set modificationsAllowed = is_granted('IS_IMPERSONATOR') or date(endDate, 'Europe/Paris') > date('now', 'Europe/Paris') %}
-        {{ form_start(form, {'attr': {'id': 'contestants_form'}}) }}
-        {{ form_row(form._token) }}
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-4">{{ "contestant.title.#{ cup }"|trans }} - {{ "contestant.data.gender.#{ gender }"|trans }}</h1>
-            <p class="lead">{{ 'contestant.description'|trans }}</p>
-            {% if modificationsAllowed %}
+    {% set modificationsAllowed = is_granted('IS_IMPERSONATOR') or date(endDate, 'Europe/Paris') > date('now', 'Europe/Paris') %}
+    {{ form_start(form, {'attr': {'id': 'contestants_form'}}) }}
+    {{ form_row(form._token) }}
+    <div class="p-2 p-md-3 bg-light rounded-3">
+        <h1 class="display-4">{{ "contestant.title.#{ cup }"|trans }}
+            - {{ "contestant.data.gender.#{ gender }"|trans }}</h1>
+        <p class="lead">{{ 'contestant.description'|trans }}</p>
+        {% if modificationsAllowed %}
             <hr class="my-4">
             <div class="container">
                 <div class="row justify-content-sm-start">
@@ -25,9 +25,9 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
-            <hr class="my-4">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" id="contestants" data-prototype="
+        {% endif %}
+        <hr class="my-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" id="contestants" data-prototype="
 {{ '            <div class="card h-100 border-danger">
                     <div class="card-body pt-2 pb-3">
                         <div class="row">
@@ -55,59 +55,63 @@
                     </div>
                 </div>
                 '|e }}">
-                {% for contestant in form.contestants %}
-                    <div class="col mb-4" id="contestant">
-                        <div class="card h-100 border-success">
-                            <div class="card-body pt-2 pb-3">
-                                <div class="row">
-                                    <div class="col-auto me-auto">
-                                        <h5 class="card-title mb-0">{{ "contestant.data.title.#{ gender }"|trans }}</h5>
-                                        <small
-                                            class="text-muted">{{ 'contestant.data.first-name'|trans }}</small>
-                                    </div>
-                                    {{ form_widget(contestant.comment) }}
-                                    <div class="col-auto" id="buttons-go-here">
-                                        <button class="btn btn-warning ms-1 {% if not modificationsAllowed %}disabled{% endif %}" type="button" data-bs-toggle="modal" data-bs-target="#moveModal" data-contestant-id="{{ contestant.vars.data.id }}"><i class="fa fa-exchange-alt"></i></button>
-                                    </div>
+            {% for contestant in form.contestants %}
+                <div class="col mb-4" id="contestant">
+                    <div class="card h-100 border-success">
+                        <div class="card-body pt-2 pb-3">
+                            <div class="row">
+                                <div class="col-auto me-auto">
+                                    <h5 class="card-title mb-0">{{ "contestant.data.title.#{ gender }"|trans }}</h5>
+                                    <small
+                                        class="text-muted">{{ 'contestant.data.first-name'|trans }}</small>
                                 </div>
-                                {{ form_widget(contestant.firstName) }}
-                                <small class="text-muted">{{ 'contestant.data.last-name'|trans }}</small>
-                                {{ form_widget(contestant.lastName) }}
-                                <small class="text-muted">{{ 'contestant.data.year'|trans }}</small>
-                                {{ form_widget(contestant.year) }}
-                                <small class="text-muted">{{ 'contestant.data.gender.title'|trans }}</small>
-                                {{ form_widget(contestant.gender) }}
-                                {{ form_widget(contestant.genderDisplay) }}
-                                <small
-                                    class="text-muted">{{ 'contestant.data.age-category.title'|trans }}</small>
-                                {{ form_widget(contestant.ageCategoryDisplay) }}
-                                <small
-                                    class="text-muted">{{ 'contestant.data.weight-category'|trans }}</small>
-                                {{ form_widget(contestant.weightCategory) }}
+                                {{ form_widget(contestant.comment) }}
+                                <div class="col-auto" id="buttons-go-here">
+                                    <button
+                                        class="btn btn-warning ms-1 {% if not modificationsAllowed %}disabled{% endif %}"
+                                        type="button" data-bs-toggle="modal" data-bs-target="#moveModal"
+                                        data-contestant-id="{{ contestant.vars.data.id }}"><i
+                                            class="fa fa-exchange-alt"></i></button>
+                                </div>
                             </div>
-                            <div class="card-footer border-success text-success">
-                                {% if contestant.vars.data.createdAt > date(deadline, 'Europe/Paris') %}
+                            {{ form_widget(contestant.firstName) }}
+                            <small class="text-muted">{{ 'contestant.data.last-name'|trans }}</small>
+                            {{ form_widget(contestant.lastName) }}
+                            <small class="text-muted">{{ 'contestant.data.year'|trans }}</small>
+                            {{ form_widget(contestant.year) }}
+                            <small class="text-muted">{{ 'contestant.data.gender.title'|trans }}</small>
+                            {{ form_widget(contestant.gender) }}
+                            {{ form_widget(contestant.genderDisplay) }}
+                            <small
+                                class="text-muted">{{ 'contestant.data.age-category.title'|trans }}</small>
+                            {{ form_widget(contestant.ageCategoryDisplay) }}
+                            <small
+                                class="text-muted">{{ 'contestant.data.weight-category'|trans }}</small>
+                            {{ form_widget(contestant.weightCategory) }}
+                        </div>
+                        <div class="card-footer border-success text-success">
+                            {% if contestant.vars.data.createdAt > date(deadline, 'Europe/Paris') %}
                                 <i class="fas fa-check-circle text-warning"></i> {{ 'contestant.status.late'|trans }}
-                                {% else %}
+                            {% else %}
                                 <i class="fas fa-check-circle text-success"></i> {{ 'contestant.status.saved'|trans }}
-                                {% endif %}
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
-                {% endfor %}
-                {% if modificationsAllowed %}
-                    <div class="col mb-4" id="add-new-contestant">
-                        <div class="card h-100 text-center align-items-center">
-                            <div class="card-body d-flex align-items-center">
-                                <button class="btn btn-primary add-a-tag stretched-link" type="button">
-                                    <i class="fas fa-user-plus fa-7x card-img"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endfor %}
             {% if modificationsAllowed %}
+                <div class="col mb-4" id="add-new-contestant">
+                    <div class="card h-100 text-center align-items-center">
+                        <div class="card-body d-flex align-items-center">
+                            <button class="btn btn-primary add-a-tag stretched-link" type="button">
+                                <i class="fas fa-user-plus fa-7x card-img"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% if modificationsAllowed %}
             <hr class="mb-4">
             <div class="container">
                 <div class="row justify-content-sm-start">
@@ -122,87 +126,90 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
-        </div>
-        <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel">
-                            {{ 'contestant.data.comment.title'|trans }}
-                        </h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="comment-textarea" class="col-form-label">
-                                    {{ 'contestant.data.comment.for'|trans }}
-                                </label>
-                                <label class="modal-body-name"></label>
-                                <textarea class="form-control" id="comment-textarea"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="modal-save" onclick="save()" type="button" class="btn btn-success"
-                                data-bs-dismiss="modal">
-                            {{ 'global.forms.button.save'|trans }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="moveModal" tabindex="-1" role="dialog" aria-labelledby="moveModalLabel">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="moveModalLabel">
-                            {{ 'contestant.action.move.title'|trans }}
-                        </h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="move-select" class="col-form-label">
-                                    {{ 'contestant.action.move.to'|trans }}
-                                </label>
-                                <span style="display: none" id="move-contestant-id"></span>
-                                <select class="form-control" id="move-select">
-                                    <option value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "messe", toGender: "female"}) }}">
-                                        {{ 'base.menu.contestant.messe'|trans }} {{ 'contestant.data.gender.female'|trans }}
-                                    </option>
-                                    <option value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "messe", toGender: "male"}) }}">
-                                        {{ 'base.menu.contestant.messe'|trans }} {{ 'contestant.data.gender.male'|trans }}
-                                    </option>
-                                    <option value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "ega", toGender: "female"}) }}">
-                                        {{ 'base.menu.contestant.ega'|trans }} {{ 'contestant.data.gender.female'|trans }}
-                                    </option>
-                                    <option value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "ega", toGender: "male"}) }}">
-                                        {{ 'base.menu.contestant.ega'|trans }} {{ 'contestant.data.gender.male'|trans }}
-                                    </option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="modal-save" onclick="move()" type="button" class="btn btn-success"
-                                data-bs-dismiss="modal">
-                            {{ 'global.forms.button.save'|trans }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{ form_end(form, {'render_rest': false}) }}
+        {% endif %}
     </div>
+    <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">
+                        {{ 'contestant.data.comment.title'|trans }}
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="comment-textarea" class="col-form-label">
+                                {{ 'contestant.data.comment.for'|trans }}
+                            </label>
+                            <label class="modal-body-name"></label>
+                            <textarea class="form-control" id="comment-textarea"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-save" onclick="save()" type="button" class="btn btn-success"
+                            data-bs-dismiss="modal">
+                        {{ 'global.forms.button.save'|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="moveModal" tabindex="-1" role="dialog" aria-labelledby="moveModalLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="moveModalLabel">
+                        {{ 'contestant.action.move.title'|trans }}
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="move-select" class="col-form-label">
+                                {{ 'contestant.action.move.to'|trans }}
+                            </label>
+                            <span style="display: none" id="move-contestant-id"></span>
+                            <select class="form-control" id="move-select">
+                                <option
+                                    value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "messe", toGender: "female"}) }}">
+                                    {{ 'base.menu.contestant.messe'|trans }} {{ 'contestant.data.gender.female'|trans }}
+                                </option>
+                                <option
+                                    value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "messe", toGender: "male"}) }}">
+                                    {{ 'base.menu.contestant.messe'|trans }} {{ 'contestant.data.gender.male'|trans }}
+                                </option>
+                                <option
+                                    value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "ega", toGender: "female"}) }}">
+                                    {{ 'base.menu.contestant.ega'|trans }} {{ 'contestant.data.gender.female'|trans }}
+                                </option>
+                                <option
+                                    value="{{ path('contestants_move', {id: "_id_", fromCup: "#{ cup }", fromGender: "#{ gender }", toCup: "ega", toGender: "male"}) }}">
+                                    {{ 'base.menu.contestant.ega'|trans }} {{ 'contestant.data.gender.male'|trans }}
+                                </option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-save" onclick="move()" type="button" class="btn btn-success"
+                            data-bs-dismiss="modal">
+                        {{ 'global.forms.button.save'|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(form, {'render_rest': false}) }}
 {% endblock %}
 
 {% block javascript %}
-    {%  set modificationsAllowed = is_granted('IS_IMPERSONATOR') or date(endDate, 'Europe/Paris') > date('now', 'Europe/Paris') %}
+    {% set modificationsAllowed = is_granted('IS_IMPERSONATOR') or date(endDate, 'Europe/Paris') > date('now', 'Europe/Paris') %}
     <script>
         let $collectionHolder;
         let $removeFormButton = $('<button class="btn btn-danger ms-1 {% if not modificationsAllowed %}disabled{% endif %}" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>');
