@@ -56,11 +56,11 @@
             <caption>{{ title|trans }}</caption>
             <thead>
             <tr>
-                <th data-field="last-name" data-sortable="true" data-filter-control="input">
-                    {{ 'contestant.data.last-name'|trans }}
-                </th>
                 <th data-field="first-name" data-sortable="true" data-filter-control="input">
                     {{ 'contestant.data.first-name'|trans }}
+                </th>
+                <th data-field="last-name" data-sortable="true" data-filter-control="input">
+                    {{ 'contestant.data.last-name'|trans }}
                 </th>
                 <th data-field="club" data-sortable="true" data-filter-control="select">
                     {{ 'admin.data.club'|trans }}
@@ -99,17 +99,17 @@
                     <td>{{ femaleContestant.comment }}</td>
                 </tr>
             {% endfor %}
-            {% for femaleContestant in maleContestants %}
+            {% for maleContestant in maleContestants %}
                 <tr>
-                    <td>{{ femaleContestant.firstName }}</td>
-                    <td>{{ femaleContestant.lastName }}</td>
-                    <td>{{ femaleContestant.registration.club }}</td>
-                    <td>{{ femaleContestant.registration.country }}</td>
+                    <td>{{ maleContestant.firstName }}</td>
+                    <td>{{ maleContestant.lastName }}</td>
+                    <td>{{ maleContestant.registration.club }}</td>
+                    <td>{{ maleContestant.registration.country }}</td>
                     <td>{{ "contestant.data.gender.male"|trans }}</td>
-                    <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
+                    <td data-tableexport-xlsxformatid="1">{{ maleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
-                    <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
-                    <td>{{ femaleContestant.comment }}</td>
+                    <td data-tableexport-xlsxformatid="1">{{ maleContestant.weightCategory }}</td>
+                    <td>{{ maleContestant.comment }}</td>
                 </tr>
             {% endfor %}
             </tbody>
