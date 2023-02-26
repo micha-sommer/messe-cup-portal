@@ -7,8 +7,8 @@ twig:
 
     globals:
         year: 2023
-        messe_count: 23
-        ega_count: 28
+        messe_count: 24
+        ega_count: 29
         deadline: 'Apr 30, 2023 23:59'
         endDate: 'May 11, 2023 23:59'
         limit_service: '@App\Service\LimitService'
