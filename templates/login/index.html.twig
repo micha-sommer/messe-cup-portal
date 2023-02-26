@@ -24,6 +24,9 @@
             </div>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
+            <div>
+                <a href="{{ path('app_forgot_password_request') }}">{{ 'login.forgot_password'|trans }}</a>
+            </div>
             <button class="btn btn-primary btn-lg" type="submit">{{ 'login.action'|trans }}</button>
         </form>
 

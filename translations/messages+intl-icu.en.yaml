@@ -110,6 +110,7 @@ invoice:
 login:
   title: Login
   description: 'Please enter the email address and password that have been used to register your club/association/union.'
+  forgot_password: 'Forgot your password?'
   action: login
 registration:
   data:
@@ -133,6 +134,30 @@ registration:
     title: Registration
     description: "Register here! In order to proceed with the registration, we will need a contact person. This information is also required for later changes that might or might not be needed. Once you've registered your club, you can add your contestants."
     action: register
+reset-password:
+  request:
+    title: 'Reset your password'
+    description: 'Enter your email address and we will send you a link to reset your password.'
+    action: 'Send password reset email'
+    data:
+      email: 'Email'
+  email:
+    subject: 'Your password reset request'
+    headline: 'To reset your password, please visit the following link'
+    expire-text: 'This link will expire in {expiretimetext}.'
+    bye: 'Cheers!'
+  check-email:
+    title: 'Password Reset Email Sent'
+    description: 'If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password. This link will expire in {expiretimetext}.'
+    try-again:
+      text: "If you don't receive an email please check your spam folder or "
+      button: 'try again'
+  reset:
+    title: 'Reset your password'
+    action: 'Reset password'
+    data:
+      first: 'New password'
+      second: 'Repeat Password'
 welcome:
   title: 'Welcome to Messe-Cup and ega-Pokal'
   greeting: Hello!

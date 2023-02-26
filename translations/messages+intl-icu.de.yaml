@@ -110,6 +110,7 @@ invoice:
 login:
   title: Einloggen
   description: 'Bitte trage deine Email-Adresse und dein Passwort ein, mit welchen du deinen Verband/Verein registriert hast.'
+  forgot_password: 'Passwort vergessen?'
   action: einloggen
 registration:
   data:
@@ -133,6 +134,30 @@ registration:
     title: Registrierung
     description: 'Trage hier deine Kontaktdaten ein. Wenn du dich mit deinen Daten registriert hast, kannst du Wettkämpfer und Wettkämpferinnen anmelden.'
     action: registrieren
+reset-password:
+  request:
+    title: 'Passwort zurücksetzen'
+    description: 'Trage hier deine Email-Adresse ein und wir senden dir einen Link zum Zurücksetzen deines Passworts.'
+    action: 'Email zum Zurücksetzen des Passworts schicken'
+    data:
+      email: 'Email-Adresse'
+  email:
+    subject: 'Deine Anfrage zum Zurücksetzen des Passworts'
+    headline: 'Um dein Passwort zurücksetzen zu können, klicke auf den folgenden Link'
+    expire-text: 'Die Gültigkeit des Links läuft in {expiretimetext} aus.'
+    bye: 'Grüße!'
+  check-email:
+    title: 'Email zum Zurücksetzen des Passworts wurde versendet'
+    description: 'Wenn ein Account mit dieser Email-Adresse existiert, so wurde soeben eine Email dorthin versendet,  welche einen Link zum Zurücksetzen deines Passworts enthält. Die Gültigkeit dieses Links läuft in {expiretimetext} aus.'
+    try-again:
+      text: "Solltest du keine Email erhalten habe, prüfe bitte deinen Spam-Ordner oder "
+      button: 'versuche es erneut'
+  reset:
+    title: 'Setze dein Passwort neu'
+    action: 'Passwort überschreiben'
+    data:
+      first: 'Neues Passwort'
+      second: 'Passwort wiederholen'
 welcome:
   title: 'Willkommen zum Messe-Cup und ega-Pokal'
   greeting: Hallo!

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'reset-password.check-email.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="p-2 p-md-3 p-md-5 mb-4 bg-light rounded-3">
+        <h1>{{ 'reset-password.check-email.title'|trans }}</h1>
+        <p>
+            {{ 'reset-password.check-email.description'|trans({'expiretimetext': resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle')}) }}
+        </p>
+        <p>{{ 'reset-password.check-email.try-again.text'|trans }}<a
+                href="{{ path('app_forgot_password_request') }}">{{ 'reset-password.check-email.try-again.button'|trans }}</a>.</p>
+    </div>
+{% endblock %}

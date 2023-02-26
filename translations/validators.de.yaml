@@ -132,3 +132,7 @@ Error: Fehler
 'Please select a valid range.': 'Bitte wählen Sie einen gültigen Bereich.'
 'Please enter a valid week.': 'Bitte geben Sie eine gültige Woche ein.'
 'There is already an account with this email': 'Es gibt bereits einen Account mit dieser Email-Adresse.'
+'The password fields must match.': 'Die Passwörter müssen gleich sein.'
+'Your password should be at least {{ limit }} characters': 'Dein Passwort muss mindestens die {{ limit }} Zeichen lang sein'
+'Please enter a password': 'Bitte gib ein Passwort ein'
+'Please enter your email': 'Bitte gibt deine Email-Adresse ein'
