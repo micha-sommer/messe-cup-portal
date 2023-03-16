@@ -12,6 +12,8 @@ twig:
         deadline: 'Apr 30, 2023 23:59'
         endDate: 'May 11, 2023 23:59'
         limit_service: '@App\Service\LimitService'
+        limit_messe: '%app.limit.messe%'
+        limit_ega: '%app.limit.ega%'
 
     form_themes: ['bootstrap_5_layout.html.twig']
 

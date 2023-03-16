@@ -18,6 +18,34 @@
         </figure>
         <hr class="my-4">
         <p>{{ 'welcome.overview.contestant.description.anonymous'|trans({'total':categories['total'],'clubs':clubsCount})|raw }}</p>
+        <div class="row row-cols-1 row-cols-xxl-2 g-3 mb-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">{{ 'welcome.overview.contestant.level-messe'|trans }}</div>
+                    <div class="progress">
+                        {% set capacityMesse = ((limit_messe - limit_service.messeCup)/limit_messe*100)|round %}
+                        {% set barColorMesse = capacityMesse > 90 ? "bg-danger" : capacityMesse > 75 ? "bg-warning" : "bg-success" %}
+                        <div class="progress-bar {{ barColorMesse }}" style="width: {{ capacityMesse }}%" role="progressbar" aria-label="{{ 'welcome.overview.contestant.level-messe'|trans }}"
+                             aria-valuenow="{{ limit_messe - limit_service.messeCup }}" aria-valuemin="0" aria-valuemax="{{ limit_messe }}">
+                            {{ capacityMesse }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">{{ 'welcome.overview.contestant.level-ega'|trans }}</div>
+                    <div class="progress">
+                        {% set capacityEga = ((limit_ega - limit_service.egaPokal)/limit_ega*100)|round %}
+                        {% set barColorEga = capacityEga > 90 ? "bg-danger" : capacityEga > 75 ? "bg-warning" : "bg-success" %}
+                        <div class="progress-bar {{ barColorEga }}" style="width: {{ capacityEga }}%" role="progressbar" aria-label="{{ 'welcome.overview.contestant.level-ega'|trans }}"
+                             aria-valuenow="{{ limit_ega - limit_service.egaPokal }}" aria-valuemin="0" aria-valuemax="{{ limit_ega }}">
+                            {{ capacityEga }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
             <div class="col">
                 <div class="card">

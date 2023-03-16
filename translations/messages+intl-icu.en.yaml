@@ -181,4 +181,6 @@ welcome:
         index: 'You have registered the following contestants:'
         anonymous: '<strong>{total}</strong> registered competitors from <strong>{clubs}</strong> clubs/nations in the following categories:'
       ega: ega-Pokal
+      level-ega: 'capacity ega-Pokal'
       messe: Messe-Cup
+      level-messe: 'capacity Messe-Cup'
