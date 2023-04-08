@@ -169,9 +169,6 @@ welcome:
     street: 'In der Lutsche 10'
     zipcode: 99097
     city: Erfurt
-    phone:
-      data: '0049-361-4233914'
-      display: '+49 361 - 4233914'
     email: info@erfurter-judo-club.de
   overview:
     send-invoice: 'Rechnung senden'
