@@ -88,7 +88,7 @@ class WelcomeController extends AbstractController
         foreach (['-27', '-30', '-33', '-36', '-40', '-44', '-48', '-52', '-57', '+57'] as $weight) {
             $categories['ega']['female'][$weight] = $this->egaFemaleContestantRepository->count(['weightCategory' => $weight]);
         }
-        foreach (['-28', '-31', '-34', '-37', '-43', '-46', '-50', '-55', '+55'] as $weight) {
+        foreach (['-28', '-31', '-34', '-37', '-40', '-43', '-46', '-50', '-55', '+55'] as $weight) {
             $categories['ega']['male'][$weight] = $this->egaMaleContestantRepository->count(['weightCategory' => $weight]);
         }
         foreach (['-36', '-40', '-44', '-48', '-52', '-57', '-63', '-70', '+70'] as $weight) {
