@@ -49,7 +49,7 @@ class EgaFemaleContestantType extends AbstractType
                     '-44' => '-44',
                     '-48' => '-48',
                     '-52' => '-52',
-                    '-57' => '+57',
+                    '-57' => '-57',
                     '+57' => '+57',
                 ]
             ])
