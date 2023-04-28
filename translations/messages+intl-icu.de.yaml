@@ -81,6 +81,7 @@ contestant:
       ega: U13
       messe: U16
     weight-category: Gewichtsklasse
+    created-at: Meldedatum
     comment:
       title: 'Kommentar hinzufügen'
       for: 'Kommentar für'

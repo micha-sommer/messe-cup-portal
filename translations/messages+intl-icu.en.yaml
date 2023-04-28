@@ -81,6 +81,7 @@ contestant:
       ega: 'U13 (under 13)'
       messe: 'U16 (under 16)'
     weight-category: 'Weight category'
+    created-at: 'Created at'
     comment:
       title: 'add a comment'
       for: 'comment for'

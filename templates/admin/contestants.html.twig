@@ -82,6 +82,9 @@
                 <th data-field="weight-category" data-sortable="true" data-filter-control="select">
                     {{ 'contestant.data.weight-category'|trans }}
                 </th>
+                <th data-field="created-at" dara-sortable="true">
+                    {{ 'contestant.data.created-at'|trans }}
+                </th>
                 <th data-field="comment" data-sortable="true">
                     {{ 'contestant.data.comment.for'|trans }}
                 </th>
@@ -98,6 +101,7 @@
                     <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
                     <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
+                    <td>{{ femaleContestant.createdAt|date('d.m.Y') }}</td>
                     <td>{{ femaleContestant.comment }}</td>
                 </tr>
             {% endfor %}
@@ -111,6 +115,7 @@
                     <td data-tableexport-xlsxformatid="1">{{ maleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
                     <td data-tableexport-xlsxformatid="1">{{ maleContestant.weightCategory }}</td>
+                    <td>{{ maleContestant.createdAt|date('d.m.Y') }}</td>
                     <td>{{ maleContestant.comment }}</td>
                 </tr>
             {% endfor %}
