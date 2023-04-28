@@ -101,7 +101,7 @@
                     <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
                     <td data-tableexport-xlsxformatid="1">{{ femaleContestant.weightCategory }}</td>
-                    <td>{{ femaleContestant.createdAt|date('d.m.Y H:m') }}</td>
+                    <td>{{ femaleContestant.createdAt|date('d.m.Y H:i') }}</td>
                     <td>{{ femaleContestant.comment }}</td>
                 </tr>
             {% endfor %}
@@ -115,7 +115,7 @@
                     <td data-tableexport-xlsxformatid="1">{{ maleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
                     <td data-tableexport-xlsxformatid="1">{{ maleContestant.weightCategory }}</td>
-                    <td>{{ maleContestant.createdAt|date('d.m.Y H:m') }}</td>
+                    <td>{{ maleContestant.createdAt|date('d.m.Y H:i') }}</td>
                     <td>{{ maleContestant.comment }}</td>
                 </tr>
             {% endfor %}
