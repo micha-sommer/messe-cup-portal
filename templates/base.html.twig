@@ -93,9 +93,11 @@
                         </li>
                     {% endif %}
                 {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('registration_new') }}">{{ 'base.menu.register'|trans }}</a>
-                    </li>
+                    {% if date('now', 'Europe/Paris') < date(endDate, 'Europe/Paris') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('registration_new') }}">{{ 'base.menu.register'|trans }}</a>
+                        </li>
+                    {% endif %}
                 {% endif %}
                 <li class="nav-item">
                     {% if is_granted('IS_IMPERSONATOR') %}
