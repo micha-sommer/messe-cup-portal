@@ -6,7 +6,7 @@
 parameters:
     app.supported_locales: 'de|en'
     app.is_active: true
-    app.year: 2023
+    app.year: 2024
     app.limit.messe: 600
     app.limit.ega: 450
 
