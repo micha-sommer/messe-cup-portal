@@ -119,6 +119,7 @@ registration:
     password: Password
     club: Club
     country: Country
+    state: State
     contact-person: 'Contact Person'
     first-name: 'First name'
     last-name: 'Last name'

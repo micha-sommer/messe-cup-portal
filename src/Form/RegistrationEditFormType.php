@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Registration;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -20,6 +21,26 @@ class RegistrationEditFormType extends AbstractType
             ->add('club', TextType::class)
             ->add('country', CountryType::class, [
                 'preferred_choices' => array('DE', 'NL', 'CH', 'SE', 'AT', 'BE', 'PL', 'CZ', 'DK', 'HU', 'FR', 'IT'),
+            ])
+            ->add('state', ChoiceType::class, [
+                'choices' => [
+                    'Baden-Württemberg' => 'BW',
+                    'Bayern' => 'BY',
+                    'Berlin' => 'BE',
+                    'Brandenburg' => 'BB',
+                    'Bremen' => 'BR',
+                    'Hamburg' => 'HH',
+                    'Hessen' => 'HE',
+                    'Mecklenburg-Vorpommern' => 'MV',
+                    'Niedersachsen' => 'NS',
+                    'Nordrhein-Westfalen' => 'NW',
+                    'Rheinland-Pfalz' => 'RP',
+                    'Saarland' => 'SL',
+                    'Sachsen' => 'SN',
+                    'Sachsen-Anhalt' => 'SA',
+                    'Schleswig-Holstein' => 'SH',
+                    'Thüringen' => 'TH',
+                ]
             ])
             ->add('firstName', TextType::class)
             ->add('lastName', TextType::class)

@@ -35,6 +35,10 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            if ($registration->getCountry() !== 'DE') {
+                $registration->setState(null);
+            }
+
             $registration->setTimestamp(DateTimeImmutable::createFromMutable(new DateTime()));
             $entityManager->persist($registration);
             $entityManager->flush();

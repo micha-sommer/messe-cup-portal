@@ -17,7 +17,8 @@
         {{ form_row(registrationForm._token) }}
         {{ form_row(registrationForm.email, {label: 'registration.data.email'}) }}
         {{ form_row(registrationForm.club, {label: 'registration.data.club'}) }}
-        {{ form_row(registrationForm.country, {label: 'registration.data.country'}) }}
+        {{ form_row(registrationForm.country, {label: 'registration.data.country', 'attr': {'onChange': 'checkState(this)'}}) }}
+        {{ form_row(registrationForm.state, {label: 'registration.data.state'}) }}
         {{ form_row(registrationForm.firstName, {label: 'registration.data.first-name'}) }}
         {{ form_row(registrationForm.lastName, {label: 'registration.data.last-name'}) }}
         {{ form_row(registrationForm.telephone, {label: 'registration.data.telephone'}) }}
@@ -25,4 +26,32 @@
         <button class="btn btn-success btn-lg" type="submit">{{ 'global.forms.button.save'|trans }}</button>
         {{ form_end(registrationForm, {'render_rest': false}) }}
     </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function () {
+            let country = $(`select#registration_edit_form_country`).val()
+            let state = $('select#registration_edit_form_state')
+
+            if (country === 'DE') {
+                state.parent().show()
+            } else {
+                state.val('').trigger('change')
+                state.parent().hide()
+            }
+        })
+
+        function checkState(element) {
+            let country = $(`select#${element.id}`).val()
+            let state = $('select#registration_edit_form_state')
+
+            if (country === 'DE') {
+                state.parent().show()
+            } else {
+                state.val('').trigger('change')
+                state.parent().hide()
+            }
+        }
+    </script>
 {% endblock %}

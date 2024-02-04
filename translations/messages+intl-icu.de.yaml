@@ -119,6 +119,7 @@ registration:
     password: Passwort
     club: Verein
     country: Land
+    state: Bundesland
     contact-person: Ansprechpartner
     first-name: Vorname
     last-name: Nachname

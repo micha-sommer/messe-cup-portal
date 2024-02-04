@@ -50,6 +50,9 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $country = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $state = null;
+
     #[ORM\OneToMany(
         mappedBy: 'registration',
         targetEntity: EgaFemaleContestant::class,
@@ -228,6 +231,19 @@ class Registration implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCountry(string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(?string $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
