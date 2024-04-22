@@ -92,7 +92,7 @@ class InvoiceController extends AbstractController
         $pdf = $this->getInvoicePDF($registration);
         $data = $pdf->Output('Invoice_' . $registration->getClub() . '.pdf', 'S');
         $mail = (new TemplatedEmail())
-            ->from(new Address('info@erfurter-judo-club.de', $name))
+            ->from(new Address('messe@thueringer-judoverband.de', $name))
             ->to($registration->getEmail())
             ->subject($subject)
             ->context([
