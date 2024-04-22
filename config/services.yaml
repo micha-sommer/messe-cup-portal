@@ -7,8 +7,8 @@ parameters:
     app.supported_locales: 'de|en'
     app.is_active: true
     app.year: 2024
-    app.limit.messe: 500
-    app.limit.ega: 350
+    app.limit.messe: 600
+    app.limit.ega: 400
 
 services:
     # default configuration for services in *this* file
