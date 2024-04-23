@@ -70,6 +70,9 @@
                 <th data-field="country" data-sortable="true" data-filter-control="select">
                     {{ 'admin.data.country'|trans }}
                 </th>
+                <th data-field="state" data-sortable="true" data-filter-control="select">
+                    {{ 'registration.data.state'|trans }}
+                </th>
                 <th data-field="gender" data-sortable="true" data-filter-control="select">
                     {{ 'contestant.data.gender.title'|trans }}
                 </th>
@@ -97,6 +100,7 @@
                     <td>{{ femaleContestant.lastName }}</td>
                     <td>{{ femaleContestant.registration.club }}</td>
                     <td>{{ femaleContestant.registration.country }}</td>
+                    <td>{{ femaleContestant.registration.state }}</td>
                     <td>{{ "contestant.data.gender.female"|trans }}</td>
                     <td data-tableexport-xlsxformatid="1">{{ femaleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
@@ -111,6 +115,7 @@
                     <td>{{ maleContestant.lastName }}</td>
                     <td>{{ maleContestant.registration.club }}</td>
                     <td>{{ maleContestant.registration.country }}</td>
+                    <td>{{ femaleContestant.registration.state }}</td>
                     <td>{{ "contestant.data.gender.male"|trans }}</td>
                     <td data-tableexport-xlsxformatid="1">{{ maleContestant.year }}</td>
                     <td>{{ "contestant.data.age-category.#{ ageCategory }"|trans }}</td>
