@@ -4,7 +4,7 @@
 
 {% block body %}
     {% set modificationsAllowed = is_granted('IS_IMPERSONATOR') or date(endDate, 'Europe/Paris') > date('now', 'Europe/Paris') %}
-    {% set additionsAllowed = is_granted('IS_IMPERSONATOR') or (cup == 'ega' and limit_service.egaPokal > 0) or (limit_service.messeCup > 0) %}
+    {% set additionsAllowed = is_granted('IS_IMPERSONATOR') or (cup == 'ega' and limit_service.egaPokal > 0) or (cup == 'messe' and limit_service.messeCup > 0) %}
     {{ form_start(form, {'attr': {'id': 'contestants_form'}}) }}
     {{ form_row(form._token) }}
     <div class="p-2 p-md-3 bg-light rounded-3">
