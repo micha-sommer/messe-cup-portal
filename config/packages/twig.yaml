@@ -10,7 +10,7 @@ twig:
         messe_count: 27
         ega_count: 32
         deadline: 'May 17, 2026 23:59'
-        endDate: 'May 27, 2026 23:59'
+        endDate: 'May 24, 2026 23:59'
         limit_service: '@App\Service\LimitService'
         limit_messe: '%app.limit.messe%'
         limit_ega: '%app.limit.ega%'
